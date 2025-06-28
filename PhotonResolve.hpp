@@ -202,7 +202,7 @@ struct PhotonView : Behaviour {
 
 };
 
-struct RaiseEventOptions {
+struct RaiseEventOptions : IL2CPP::Il2CppObject {
 
     static Class GetClass(){
         static Class cached = Class("Photon.Realtime", "RaiseEventOptions");
@@ -221,7 +221,7 @@ struct RaiseEventOptions {
 
 };
 
-struct SendOptions {
+struct SendOptions : IL2CPP::Il2CppObject {
     static Class GetClass(){
         static Class cached = Class("ExitGames.Client.Photon", "SendOptions");
         return cached;
@@ -601,7 +601,7 @@ struct Hashtable : Structures::Mono::Dictionary<void*, void*> {
     // todo: implement hashtable
 };
 
-struct NetPlayer {
+struct NetPlayer : IL2CPP::Il2CppObject {
     static Class GetClass(){
         static Class cached = Class("", "NetPlayer");
         return cached;
@@ -613,7 +613,7 @@ struct NetPlayer {
     }
 };
 
-struct Player {
+struct Player : IL2CPP::Il2CppObject {
     static Class GetClass(){
         static Class cached = Class("Photon.Realtime", "Player", Image("PhotonRealtime.dll"));
         return cached;
@@ -788,7 +788,7 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
 
 };
 
-struct PhotonNetwork {
+struct PhotonNetwork : IL2CPP::Il2CppObject {
     static Class GetClass(){
         static Class cached = Class("Photon.Pun", "PhotonNetwork");
         return cached;
