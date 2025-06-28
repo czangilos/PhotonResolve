@@ -591,11 +591,32 @@ struct ServerSettings : ScriptableObject {
     }
 };
 
-struct Hashtable : Structures::Mono::Dictionary<void*, void*> {
+struct Hashtable : Structures::Mono::Dictionary<BNM::IL2CPP::Il2CppObject*, BNM::IL2CPP::Il2CppObject*> {
     static Class GetClass(){
         static Class cached = Class("ExitGames.Client.Photon", "Hashtable");
         return cached;
     }
+	
+	void Add(uint8_t k, BNM::IL2CPP::Il2CppObject* v) {
+		static Method<void> Add = GetClass().GetMethod("Add");
+		return Add[this](k,v);
+	}
+	
+	bool ContainsKey(uint8_t key){
+		static Method<bool> ContainsKey = GetClass().GetMethod("ContainsKey");
+		return ContainsKey[this](key);
+	}
+	
+	void Remove(uint8_t k){
+		static Method<void> Remove = GetClass().GetMethod("Remove");
+		return Remove[this](k);
+	}
+	
+	std::string ToString(){
+		static Method<String*> ToString = GetClass().GetMethod("ToString");
+		auto str = ToString[this]();
+		return str->str();
+	}
 
     // todo: implement hashtable
 };
@@ -892,5 +913,9 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         static Method<Player*> getM = GetClass().GetMethod("get_MasterClient", 0);
         return getM();
     }
-
+	
+	static GameObject* Instantiate(std::string prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
+		static Method<GameObject*> Instantiate = GetClass().GetMethod("Instantiate");
+		Instantiate(CreateMonoString(prefabName), position, rotation, group, data);
+	}
 };
