@@ -818,6 +818,107 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         return type;
     }
 
+    static bool ConnectUsingSettings() {
+        static Method<bool> connect = GetClass().GetMethod("ConnectUsingSettings", 0);
+        return connect();
+    }
+
+    static bool ConnectUsingSettings(AppSettings* appSettings, bool startInOfflineMode = false) {
+        static Method<bool> connect = GetClass().GetMethod("ConnectUsingSettings", {"appSettings", "startInOfflineMode"});
+        return connect();
+    }
+
+    static bool GetInRoom() {
+        static Method<bool> inRoom = GetClass().GetMethod("get_InRoom", 0);
+        return inRoom();
+    }
+
+    static bool ConnectToRegion(std::string region) {
+        static Method<bool> Cregion = GetClass().GetMethod("ConnectToRegion", {"region"});
+        return Cregion(CreateMonoString(region));
+    }
+
+    static void Disconnect() {
+        static Method<void> disconnect = GetClass().GetMethod("Disconnect", 0);
+        disconnect();
+    }
+
+    static void Reconnect() {
+        static Method<void> reconnect = GetClass().GetMethod("Reconnect", 0);
+        reconnect();
+    }
+
+    static int GetPing() {
+        static Method<int> getPing = GetClass().GetMethod("GetPing", 0);
+        return getPing();
+    }
+
+    static int GetCountOfPlayersOnMaster() {
+        static Method<int> countOf = GetClass().GetMethod("get_CountOfPlayersOnMaster", 0);
+        return countOf();
+    }
+
+    static int GetCountOfPlayersInRooms() {
+        static Method<int> countOf = GetClass().GetMethod("get_CountOfPlayersInRooms", 0);
+        return countOf();
+    }
+
+    static int GetCountOfPlayers() {
+        static Method<int> countOf = GetClass().GetMethod("get_CountOfPlayers", 0);
+        return countOf();
+    }
+
+    static int GetCountOfRooms() {
+        static Method<int> countOf = GetClass().GetMethod("get_CountOfRooms", 0);
+        return countOf();
+    }
+
+    static void OpRemoveCompleteCache() {
+        static Method<void> remove = GetClass().GetMethod("OpRemoveCompleteCache", 0);
+        remove();
+    }
+
+    static void OpRemoveCompleteCacheOfPlayer(int actorNumber) {
+        static Method<void> remove = GetClass().GetMethod("OpRemoveCompleteCacheOfPlayer", 1);
+        remove(actorNumber);
+    }
+
+    static void OpCleanActorRpcBuffer(int actorNumber) {
+        static Method<void> clean = GetClass().GetMethod("OpCleanActorRpcBuffer", 1);
+        clean(actorNumber);
+    }
+
+
+    static void SetSerializationRate(int rate) {
+        static Method<void> serializationRate = GetClass().GetMethod("set_SerializationRate", 1);
+        serializationRate(rate);
+    }
+
+    static int GetSerializationRate() {
+        static Method<int> serializationRate = GetClass().GetMethod("get_SerializationRate", 0);
+        return serializationRate();
+    }
+
+    static void SetSendRate(int rate) {
+        static Method<void> serializationRate = GetClass().GetMethod("set_SendRate", 1);
+        serializationRate(rate);
+    }
+
+    static int GetSendRate() {
+        static Method<int> serializationRate = GetClass().GetMethod("get_SendRate", 0);
+        return serializationRate();
+    }
+
+    static int GetServerTimestamp() {
+        static Method<int> serverTimestamp = GetClass().GetMethod("get_ServerTimestamp", 0);
+        return serverTimestamp();
+    }
+
+    static bool GetInLobby() {
+        static Method<bool> inLobby = GetClass().GetMethod("get_InLobby", 0);
+        return inLobby();
+    }
+
     static AuthenticationValues* GetAuthValues(){
         static Method<AuthenticationValues*> getAuthValues = GetClass().GetMethod("get_AuthValues", 0);
         return getAuthValues();
