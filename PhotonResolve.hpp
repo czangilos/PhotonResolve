@@ -16,6 +16,10 @@ struct SendOptions;
 struct PhotonView;
 struct RoomInfo;
 struct Room;
+struct AuthenticationValues;
+struct TypedLobby;
+struct RoomOptions;
+
 
 
 enum RpcTarget {
@@ -70,6 +74,198 @@ enum CustomAuthenticationType : uint8_t {
     Epic,
     FacebookGaming = 15,
     None = 255
+};
+
+enum MatchmakingMode : uint8_t
+{
+    FillRoom,
+    SerialMatching,
+    RandomMatching
+};
+
+enum LobbyType : uint8_t
+{
+    Default,
+    SqlLobby = 2,
+    AsyncRandomLobby
+};
+
+
+struct RoomOptions : IL2CPP::Il2CppObject {
+    static Class GetClass(){
+        static Class cached = Class("Photon.Realtime", "RoomOptions");
+        return cached;
+    }
+
+    static MonoType* GetType() {
+        static MonoType* type = GetClass().GetMonoType();
+        return type;
+    }
+
+    bool GetIsVisible() {
+        static Method<bool> getisVisible = GetClass().GetMethod("get_IsVisible", 0);
+        return getisVisible[this]();
+    }
+
+    void SetIsVisible(bool visible) {
+        static Method<void> setisVisible = GetClass().GetMethod("set_IsVisible", 1);
+        setisVisible[this](visible);
+    }
+
+
+    bool GetIsOpen() {
+        static Method<bool> getIsOpen = GetClass().GetMethod("get_IsOpen", 0);
+        return getIsOpen[this]();
+    }
+
+    void SetIsOpen(bool open) {
+        static Method<void> setIsOpen = GetClass().GetMethod("set_IsOpen", 1);
+        setIsOpen[this](open);
+    }
+
+
+    bool GetCleanupCacheOnLeave() {
+        static Method<bool> getCleanupCacheOnLeave = GetClass().GetMethod("get_CleanupCacheOnLeave", 0);
+        return getCleanupCacheOnLeave[this]();
+    }
+
+    void SetCleanupCacheOnLeave(bool value) {
+        static Method<void> setCleanupCacheOnLeave = GetClass().GetMethod("set_CleanupCacheOnLeave", 1);
+        setCleanupCacheOnLeave[this](value);
+    }
+
+
+    bool GetSuppressRoomEvents() {
+        static Method<bool> getSuppressRoomEvents = GetClass().GetMethod("get_SuppressRoomEvents", 0);
+        return getSuppressRoomEvents[this]();
+    }
+
+    void SetSuppressRoomEvents(bool value) {
+        static Method<void> setSuppressRoomEvents = GetClass().GetMethod("set_SuppressRoomEvents", 1);
+        setSuppressRoomEvents[this](value);
+    }
+
+
+    bool GetSuppressPlayerInfo() {
+        static Method<bool> getSuppressPlayerInfo = GetClass().GetMethod("get_SuppressPlayerInfo", 0);
+        return getSuppressPlayerInfo[this]();
+    }
+
+    void SetSuppressPlayerInfo(bool value) {
+        static Method<void> setSuppressPlayerInfo = GetClass().GetMethod("set_SuppressPlayerInfo", 1);
+        setSuppressPlayerInfo[this](value);
+    }
+
+
+    bool GetPublishUserId() {
+        static Method<bool> getPublishUserId = GetClass().GetMethod("get_PublishUserId", 0);
+        return getPublishUserId[this]();
+    }
+
+    void SetPublishUserId(bool value) {
+        static Method<void> setPublishUserId = GetClass().GetMethod("set_PublishUserId", 1);
+        setPublishUserId[this](value);
+    }
+
+
+    bool GetDeleteNullProperties() {
+        static Method<bool> getDeleteNullProperties = GetClass().GetMethod("get_DeleteNullProperties", 0);
+        return getDeleteNullProperties[this]();
+    }
+
+    void SetDeleteNullProperties(bool value) {
+        static Method<void> setDeleteNullProperties = GetClass().GetMethod("set_DeleteNullProperties", 1);
+        setDeleteNullProperties[this](value);
+    }
+
+
+    bool GetBroadcastPropsChangeToAll() {
+        static Method<bool> getBroadcastPropsChangeToAll = GetClass().GetMethod("get_BroadcastPropsChangeToAll", 0);
+        return getBroadcastPropsChangeToAll[this]();
+    }
+
+    void SetBroadcastPropsChangeToAll(bool value) {
+        static Method<void> setBroadcastPropsChangeToAll = GetClass().GetMethod("set_BroadcastPropsChangeToAll", 1);
+        setBroadcastPropsChangeToAll[this](value);
+    }
+
+
+    uint8_t GetMaxPlayers(){
+        static Field<uint8_t> maxPlayers = GetClass().GetField("MaxPlayers");
+        maxPlayers.SetInstance(this);
+        return maxPlayers.Get();
+    }
+
+    void SetMaxPlayers(uint8_t value){
+        static Field<uint8_t> maxPlayers = GetClass().GetField("MaxPlayers");
+        maxPlayers.SetInstance(this);
+        maxPlayers.Set(value);
+    }
+
+
+    int GetPlayerTtl(){
+        static Field<int> maxPlayerTtl = GetClass().GetField("PlayerTtl");
+        maxPlayerTtl.SetInstance(this);
+        return maxPlayerTtl.Get();
+    }
+
+    void SetPlayerTtl(int value){
+        static Field<int> maxPlayerTtl = GetClass().GetField("PlayerTtl");
+        maxPlayerTtl.SetInstance(this);
+        maxPlayerTtl.Set(value);
+    }
+
+
+    int GetEmptyRoomTtl(){
+        static Field<int> emptyRoomTtl = GetClass().GetField("EmptyRoomTtl");
+        emptyRoomTtl.SetInstance(this);
+        return emptyRoomTtl.Get();
+    }
+
+    void SetEmptyRoomTtl(int value){
+        static Field<int> emptyRoomTtl = GetClass().GetField("EmptyRoomTtl");
+        emptyRoomTtl.SetInstance(this);
+        emptyRoomTtl.Set(value);
+    }
+
+
+    Hashtable* GetCustomRoomProperties(){
+        static Field<Hashtable*> customRoomProperties = GetClass().GetField("CustomRoomProperties");
+        customRoomProperties.SetInstance(this);
+        return customRoomProperties.Get();
+    }
+
+    void SetCustomRoomProperties(Hashtable* value){
+        static Field<Hashtable*> customRoomProperties = GetClass().GetField("CustomRoomProperties");
+        customRoomProperties.SetInstance(this);
+        customRoomProperties.Set(value);
+    }
+
+
+    std::vector<String*> GetCustomRoomPropertiesForLobby() {
+        static Field<Array<String*>*> customRoomPropertiesForLobby = GetClass().GetField("CustomRoomPropertiesForLobby");
+        customRoomPropertiesForLobby.SetInstance(this);
+        return customRoomPropertiesForLobby.Get()->ToVector();
+    }
+
+    void SetCustomRoomPropertiesForLobby(Array<String*>* properties) {
+        static Field<Array<String*>*> customRoomPropertiesForLobby = GetClass().GetField("CustomRoomPropertiesForLobby");
+        customRoomPropertiesForLobby.SetInstance(this);
+        customRoomPropertiesForLobby.Set(properties);
+    }
+
+
+    std::vector<String*> GetPlugins() {
+        static Field<Array<String*>*> plugins = GetClass().GetField("Plugins");
+        plugins.SetInstance(this);
+        return plugins.Get()->ToVector();
+    }
+
+    void SetPlugins(Array<String*>* properties) {
+        static Field<Array<String*>*> plugins = GetClass().GetField("Plugins");
+        plugins.SetInstance(this);
+        plugins.Set(properties);
+    }
 };
 
 struct RoomInfo : IL2CPP::Il2CppObject {
@@ -807,6 +1003,50 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
 
 };
 
+struct TypedLobby : IL2CPP::Il2CppObject {
+    static Class GetClass(){
+        static Class cached = Class("Photon.Realtime", "TypedLobby");
+        return cached;
+    }
+
+    static MonoType* GetType() {
+        static MonoType* type = GetClass().GetMonoType();
+        return type;
+    }
+
+    std::string GetName() {
+        static Field<String*> nameF = GetClass().GetField("Name");
+        return nameF[this].Get()->str();
+    }
+
+    void SetName(std::string name) {
+        static Field<String*> nameF = GetClass().GetField("Name");
+        nameF[this].Set(CreateMonoString(name));
+    }
+
+    LobbyType GetLobbyType() {
+        static Field<LobbyType> lType = GetClass().GetField("Type");
+        lType.SetInstance(this);
+        return lType.Get(); // i dont know why but when i do [this] it errors out :cry:
+    }
+
+    void SetLobbyType(LobbyType type) {
+        static Field<LobbyType> lType = GetClass().GetField("Type");
+        lType.SetInstance(this);
+        lType.Set(type); // i dont know why but when i do [this] it errors out :cry:
+    }
+
+    static TypedLobby* GetDefault() {
+        static Field<TypedLobby*> def = GetClass().GetField("Default");
+        return def.Get();
+    }
+
+    std::string ToString() {
+        static Method<String*> toString = GetClass().GetMethod("ToString", 0);
+        return toString[this]()->str();
+    }
+};
+
 struct PhotonNetwork : IL2CPP::Il2CppObject {
     static Class GetClass(){
         static Class cached = Class("Photon.Pun", "PhotonNetwork");
@@ -817,6 +1057,8 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         static MonoType* type = GetClass().GetMonoType();
         return type;
     }
+
+
 
     static bool ConnectUsingSettings() {
         static Method<bool> connect = GetClass().GetMethod("ConnectUsingSettings", 0);
@@ -957,6 +1199,69 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
     static bool JoinRandomRoom(){
         static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomRoom", 0);
         return joinRandomRoomM();
+    }
+
+    static bool JoinRandomRoom(Hashtable* expectedCustomRoomProperties, uint8_t expectedMaxPlayers) {
+        static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomRoom", {"expectedCustomRoomProperties", "expectedMaxPlayers"});
+        return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers);
+    }
+
+    static bool JoinRandomRoom(Hashtable* expectedCustomRoomProperties, uint8_t expectedMaxPlayers, MatchmakingMode matchingType, TypedLobby* typedLobby, std::string sqlLobbyFilter, Array<String*>* expectedUsers = nullptr) {
+        static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomRoom", {"expectedCustomRoomProperties", "expectedMaxPlayers", "matchingType", "typedLobby", "sqlLobbyFilter", "expectedUsers"});
+        return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers, matchingType, typedLobby,
+                               CreateMonoString(sqlLobbyFilter), expectedUsers);
+    }
+
+    static bool JoinRandomOrCreateRoom(Hashtable* expectedCustomRoomProperties = nullptr, uint8_t expectedMaxPlayers = 0, MatchmakingMode matchingType = MatchmakingMode::FillRoom, TypedLobby* typedLobby = nullptr, std::string sqlLobbyFilter = nullptr, std::string roomName = nullptr, RoomOptions* roomOptions = nullptr, Array<String*>* expectedUsers = nullptr) {
+        static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomOrCreateRoom", {"expectedCustomRoomProperties", "expectedMaxPlayers", "matchingType", "typedLobby", "sqlLobbyFilter", "roomName", "roomOptions", "expectedUsers"});
+        return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers, matchingType, typedLobby,
+                               CreateMonoString(sqlLobbyFilter), CreateMonoString(roomName),
+                               expectedUsers);
+    }
+
+    static bool CreateRoom(std::string roomName, RoomOptions* roomOptions = nullptr, TypedLobby* typedLobby = nullptr, Array<String*>* expectedUsers = nullptr) {
+        static Method<bool> createRoomM = GetClass().GetMethod("CreateRoom", {"roomName", "roomOptions", "typedLobby", "expectedUsers"});
+        return createRoomM(CreateMonoString(roomName), roomOptions, typedLobby, expectedUsers);
+    }
+
+    static bool JoinOrCreateRoom(std::string roomName, RoomOptions* roomOptions, TypedLobby* typedLobby, Array<String*>* expectedUsers = nullptr) {
+        static Method<bool> joinOrCreateRoomM = GetClass().GetMethod("JoinOrCreateRoom", {"roomName", "roomOptions", "typedLobby", "expectedUsers"});
+        return joinOrCreateRoomM(CreateMonoString(roomName), roomOptions, typedLobby, expectedUsers);
+    }
+
+    static bool JoinRoom(std::string roomName, Array<String*>* expectedUsers = nullptr) {
+        static Method<bool> joinRoomM = GetClass().GetMethod("JoinRoom", {"roomName", "expectedUsers"});
+        return joinRoomM(CreateMonoString(roomName), expectedUsers);
+    }
+
+    static bool RejoinRoom(std::string roomName) {
+        static Method<bool> RejoinRoomM = GetClass().GetMethod("RejoinRoom", {"roomName"});
+        return RejoinRoomM(CreateMonoString(roomName));
+    }
+
+    static bool JoinLobby() {
+        static Method<bool> joinLobby = GetClass().GetMethod("JoinLobby", 0);
+        return joinLobby();
+    }
+
+    static bool JoinLobby(TypedLobby* typedLobby) {
+        static Method<bool> joinLobby = GetClass().GetMethod("JoinLobby", {"typedLobby"});
+        return joinLobby(typedLobby);
+    }
+
+    static bool LeaveLobby() {
+        static Method<bool> leaveLobby = GetClass().GetMethod("LeaveLobby", 0);
+        return leaveLobby();
+    }
+
+    static bool ReconnectAndRejoin() {
+        static Method<bool> reconnectAndRejoin = GetClass().GetMethod("ReconnectAndRejoin", 0);
+        return reconnectAndRejoin();
+    }
+
+    static bool LeaveRoom(bool becomeInactive = true){
+        static Method<bool> leaveRoom = GetClass().GetMethod("LeaveRoom", {"becomeInactive"});
+        return leaveRoom(becomeInactive);
     }
 
     static bool FindFriends(Structures::Mono::List<String*> friends){
