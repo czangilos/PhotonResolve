@@ -1320,7 +1320,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
     }
 
     static GameObject* Instantiate(std::string prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
-        static Method<GameObject*> Instantiate = GetClass().GetMethod("Instantiate");
-        Instantiate(CreateMonoString(prefabName), position, rotation, group, data);
+        static Method<GameObject*> instantiate = GetClass().GetMethod("Instantiate");
+        return instantiate(CreateMonoString(prefabName), position, rotation, group, data);
     }
 };
