@@ -1059,7 +1059,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
     }
 
     static ServerSettings* GetPhotonServerSettings() {
-        Method<ServerSettings*> settings = GetClass().GetMethod("get_PhotonServerSettings", 0);
+        static Method<ServerSettings*> settings = GetClass().GetMethod("get_PhotonServerSettings", 0);
         return settings();
     }
 
