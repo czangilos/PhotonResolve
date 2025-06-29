@@ -1058,7 +1058,10 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         return type;
     }
 
-
+    static ServerSettings* GetPhotonServerSettings() {
+        Method<ServerSettings*> settings = GetClass().GetMethod("get_PhotonServerSettings", 0);
+        return settings();
+    }
 
     static bool ConnectUsingSettings() {
         static Method<bool> connect = GetClass().GetMethod("ConnectUsingSettings", 0);
@@ -1285,12 +1288,12 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
     }
 
     static std::vector<Player*> GetPlayerList(){
-        static Method<Structures::Mono::Array<Player*>*> getPlayerListM = GetClass().GetMethod("get_PlayerList", 0);
+        static Method<Array<Player*>*> getPlayerListM = GetClass().GetMethod("get_PlayerList", 0);
         return getPlayerListM()->ToVector();
     }
 
     static std::vector<Player*> GetPlayerListOthers(){
-        static Method<Structures::Mono::Array<Player*>*> getPlayerListOthersM = GetClass().GetMethod("get_PlayerListOthers", 0);
+        static Method<Array<Player*>*> getPlayerListOthersM = GetClass().GetMethod("get_PlayerListOthers", 0);
         return getPlayerListOthersM()->ToVector();
     }
 
