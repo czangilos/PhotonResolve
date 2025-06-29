@@ -1303,13 +1303,38 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
     }
 
     static void DestroyPlayerObjects(Player* player){
-        static Method<void> destroyPlayerObjects = GetClass().GetMethod("DestroyPlayerObjects", 1);
+        static Method<void> destroyPlayerObjects = GetClass().GetMethod("DestroyPlayerObjects", {"targetPlayer"});
         destroyPlayerObjects(player);
     }
 
-    static bool RaiseEvent(uint8_t code, IL2CPP::Il2CppObject* content, RaiseEventOptions* eventOptions, SendOptions* options){
-        static Method<bool> raiseEventInternal = GetClass().GetMethod("RaiseEventInternal", 4);
-        return raiseEventInternal(code, content, eventOptions, options);
+    static void DestroyPlayerObjects(int targetPlayerId) {
+        static Method<void> destroyPlayerObjects = GetClass().GetMethod("DestroyPlayerObjects", {"targetPlayerId"});
+        destroyPlayerObjects(targetPlayerId);
+    }
+
+    static void RemoveRPCs(Player* targetPlayer) {
+        static Method<void> removeRpcs = GetClass().GetMethod("RemoveRPCs", {"targetPlayer"});
+        removeRpcs(targetPlayer);
+    }
+
+    static void RemoveRPCs(PhotonView* targetPhotonView) {
+        static Method<void> removeRpcs = GetClass().GetMethod("RemoveRPCs", {"targetPhotonView"});
+        removeRpcs(targetPhotonView);
+    }
+
+    static bool RaiseEvent(uint8_t eventCode, IL2CPP::Il2CppObject* eventContent, RaiseEventOptions* raiseEventOptions, SendOptions* sendOptions){
+        static Method<bool> raiseEvent = GetClass().GetMethod("RaiseEvent", {"eventCode", "eventContent", "raiseEventOptions", "sendOptions"});
+        return raiseEvent(eventCode, eventContent, raiseEventOptions, sendOptions);
+    }
+
+    static std::string GetPunVersion() {
+        static Field<String*> punVersion = GetClass().GetField("PunVersion");
+        return punVersion.Get()->str();
+    }
+
+    static bool GetCustomRoomList(TypedLobby* typedLobby, std::string sqlLobbyFilter) {
+        static Method<bool> getCustomRoomList = GetClass().GetMethod("GetCustomRoomList", {"typedLobby", "sqlLobbyFilter"});
+        return getCustomRoomList(typedLobby, CreateMonoString(sqlLobbyFilter));
     }
 
     static Room* GetCurrentRoom() {
@@ -1325,5 +1350,25 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
     static GameObject* Instantiate(std::string prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
         static Method<GameObject*> instantiate = GetClass().GetMethod("Instantiate");
         return instantiate(CreateMonoString(prefabName), position, rotation, group, data);
+    }
+
+    static GameObject* InstantiateRoomObject(std::string prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
+        static Method<GameObject*> instantiate = GetClass().GetMethod("InstantiateRoomObject");
+        return instantiate(CreateMonoString(prefabName), position, rotation, group, data);
+    }
+
+    static GameObject* InstantiateSceneObject(std::string prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
+        static Method<GameObject*> instantiate = GetClass().GetMethod("InstantiateSceneObject");
+        return instantiate(CreateMonoString(prefabName), position, rotation, group, data);
+    }
+
+    static void Destroy(GameObject* targetGo) {
+        static Method<void> destroy = GetClass().GetMethod("Destroy", {"targetGo"});
+        destroy(targetGo);
+    }
+
+    static void Destroy(PhotonView* targetView) {
+        static Method<void> destroy = GetClass().GetMethod("Destroy", {"targetView"});
+        destroy(targetView);
     }
 };
