@@ -819,9 +819,8 @@ struct Hashtable : Structures::Mono::Dictionary<BNM::IL2CPP::Il2CppObject*, BNM:
     }
 
     std::string ToString(){
-        static Method<String*> ToString = GetClass().GetMethod("ToString");
-        auto str = ToString[this]();
-        return str->str();
+        static Method<String*> toString = GetClass().GetMethod("ToString");
+        return toString[this]()->str();
     }
 
 };
