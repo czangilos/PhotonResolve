@@ -798,6 +798,16 @@ struct Hashtable : Structures::Mono::Dictionary<BNM::IL2CPP::Il2CppObject*, BNM:
         return Add[this](k,v);
     }
 
+    void Set(IL2CPP::Il2CppObject* key, IL2CPP::Il2CppObject* value) {
+        static Method<void> setItem = GetClass().GetMethod("set_Item", {"key", "value"});
+        setItem[this](key, value);
+    }
+
+    IL2CPP::Il2CppObject* Get(IL2CPP::Il2CppObject* key) {
+        static Method<IL2CPP::Il2CppObject*> getItem = GetClass().GetMethod("get_Item", {"key", "value"});
+        return getItem[this](key);
+    }
+
     bool ContainsKey(uint8_t key){
         static Method<bool> ContainsKey = GetClass().GetMethod("ContainsKey");
         return ContainsKey[this](key);
