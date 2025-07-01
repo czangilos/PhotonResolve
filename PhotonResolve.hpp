@@ -382,8 +382,6 @@ struct PhotonView : Behaviour {
         setOwner[this](player);
     }
 
-
-
     static PhotonView* Get(GameObject* obj) {
         static Method<PhotonView*> getView = GetClass().GetMethod("Get", 1);
         return getView(obj);
@@ -394,7 +392,10 @@ struct PhotonView : Behaviour {
         rpc[this](CreateMonoString(methodName), target, parameters);
     }
 
-
+    void RPC(std::string methodName, Player* targetPlayer, Array<IL2CPP::Il2CppObject*>* parameters) {
+        static Method<void> rpc = GetClass().GetMethod("RPC", {"methodName", "targetPlayer", "parameters"});
+        rpc[this](CreateMonoString(methodName), targetPlayer, parameters);
+    }
 };
 
 struct RaiseEventOptions : IL2CPP::Il2CppObject {
@@ -415,30 +416,84 @@ struct RaiseEventOptions : IL2CPP::Il2CppObject {
     }
 
 };
+/*using System;
 
-struct SendOptions : IL2CPP::Il2CppObject {
-    static Class GetClass(){
-        static Class cached = Class("ExitGames.Client.Photon", "SendOptions");
-        return cached;
+namespace ExitGames.Client.Photon
+{
+    // Token: 0x02000031 RID: 49
+    public struct SendOptions
+    {
+        // Token: 0x1700008A RID: 138
+        // (get) Token: 0x06000287 RID: 647 RVA: 0x00013478 File Offset: 0x00011678
+        // (set) Token: 0x06000288 RID: 648 RVA: 0x00013493 File Offset: 0x00011693
+        public bool Reliability
+        {
+            get
+            {
+                return this.DeliveryMode == DeliveryMode.Reliable;
+            }
+            set
+            {
+                this.DeliveryMode = (value ? DeliveryMode.Reliable : DeliveryMode.Unreliable);
+            }
+        }
+
+        // Token: 0x0400018D RID: 397
+        public static readonly SendOptions SendReliable = new SendOptions
+        {
+            Reliability = true
+        };
+
+        // Token: 0x0400018E RID: 398
+        public static readonly SendOptions SendUnreliable = new SendOptions
+        {
+            Reliability = false
+        };
+
+        // Token: 0x0400018F RID: 399
+        public DeliveryMode DeliveryMode;
+
+        // Token: 0x04000190 RID: 400
+        public bool Encrypt;
+
+        // Token: 0x04000191 RID: 401
+        public byte Channel;
     }
-
-    static MonoType* GetType() {
-        static MonoType* type = GetClass().GetMonoType();
-        return type;
-    }
-
-    static SendOptions* SendReliable() {
-        static Field<SendOptions*> options = GetClass().GetField("SendReliable");
-        return options.Get();
-    }
-
-    static SendOptions* SendUnreliable() {
-        static Field<SendOptions*> options = GetClass().GetField("SendUnreliable");
-        return options.Get();
-    }
-
-
+}*/
+enum DeliveryMode
+{
+    Unreliable,
+    Reliable,
+    UnreliableUnsequenced,
+    ReliableUnsequenced
 };
+
+
+struct SendOptions
+{
+    int DeliveryMode;
+    bool Encrypt;
+    byte Channel;
+
+    void SetReliability(bool reliability) {
+        this->DeliveryMode = (reliability ? DeliveryMode::Reliable : DeliveryMode::Unreliable);
+    }
+    bool GetReliability() {
+        return this->DeliveryMode == DeliveryMode::Reliable;
+    }
+
+    inline static SendOptions sendReliable() {
+        SendOptions opts {};
+        opts.SetReliability(true);
+        return opts;
+    }
+    inline static SendOptions sendUnreliable() {
+        SendOptions opts {};
+        opts.SetReliability(false);
+        return opts;
+    }
+};
+
 
 struct ScriptableObject : Object {
     static Class GetClass(){
@@ -1331,7 +1386,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         removeRpcs(targetPhotonView);
     }
 
-    static bool RaiseEvent(uint8_t eventCode, IL2CPP::Il2CppObject* eventContent, RaiseEventOptions* raiseEventOptions, SendOptions* sendOptions){
+    static bool RaiseEvent(uint8_t eventCode, IL2CPP::Il2CppObject* eventContent, RaiseEventOptions* raiseEventOptions, SendOptions sendOptions){
         static Method<bool> raiseEvent = GetClass().GetMethod("RaiseEvent", {"eventCode", "eventContent", "raiseEventOptions", "sendOptions"});
         return raiseEvent(eventCode, eventContent, raiseEventOptions, sendOptions);
     }
