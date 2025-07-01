@@ -382,9 +382,14 @@ struct PhotonView : Behaviour {
         setOwner[this](player);
     }
 
-    static PhotonView* Get(GameObject* obj) {
-        static Method<PhotonView*> getView = GetClass().GetMethod("Get", 1);
-        return getView(obj);
+    static PhotonView* Get(GameObject* gameObj) {
+        static Method<PhotonView*> getView = GetClass().GetMethod("Get", { "gameObj" });
+        return getView(gameObj);
+    }
+
+    static PhotonView* Get(Component* component) {
+        static Method<PhotonView*> getView = GetClass().GetMethod("Get", { "component" });
+        return getView(component);
     }
 
     void RPC(std::string methodName, RpcTarget target, Array<IL2CPP::Il2CppObject*>* parameters) {
@@ -416,50 +421,7 @@ struct RaiseEventOptions : IL2CPP::Il2CppObject {
     }
 
 };
-/*using System;
 
-namespace ExitGames.Client.Photon
-{
-    // Token: 0x02000031 RID: 49
-    public struct SendOptions
-    {
-        // Token: 0x1700008A RID: 138
-        // (get) Token: 0x06000287 RID: 647 RVA: 0x00013478 File Offset: 0x00011678
-        // (set) Token: 0x06000288 RID: 648 RVA: 0x00013493 File Offset: 0x00011693
-        public bool Reliability
-        {
-            get
-            {
-                return this.DeliveryMode == DeliveryMode.Reliable;
-            }
-            set
-            {
-                this.DeliveryMode = (value ? DeliveryMode.Reliable : DeliveryMode.Unreliable);
-            }
-        }
-
-        // Token: 0x0400018D RID: 397
-        public static readonly SendOptions SendReliable = new SendOptions
-        {
-            Reliability = true
-        };
-
-        // Token: 0x0400018E RID: 398
-        public static readonly SendOptions SendUnreliable = new SendOptions
-        {
-            Reliability = false
-        };
-
-        // Token: 0x0400018F RID: 399
-        public DeliveryMode DeliveryMode;
-
-        // Token: 0x04000190 RID: 400
-        public bool Encrypt;
-
-        // Token: 0x04000191 RID: 401
-        public byte Channel;
-    }
-}*/
 enum DeliveryMode
 {
     Unreliable,
