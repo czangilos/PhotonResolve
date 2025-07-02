@@ -1088,6 +1088,15 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         return type;
     }
 
+    static void AddCallbackTarget(Il2CppObject* target) {
+        static Method<void> AddCallbackTarget = GetClass().GetMethod("AddCallbackTarget");
+        AddCallbackTarget(target);
+    }
+    static void RemoveCallbackTarget(Il2CppObject* target) {
+        static Method<void> RemoveCallbackTarget = GetClass().GetMethod("RemoveCallbackTarget");
+        RemoveCallbackTarget(target);
+    }
+
     static ServerSettings* GetPhotonServerSettings() {
         static Method<ServerSettings*> settings = GetClass().GetMethod("get_PhotonServerSettings", 0);
         return settings();
@@ -1400,5 +1409,32 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
     static void Destroy(PhotonView* targetView) {
         static Method<void> destroy = GetClass().GetMethod("Destroy", {"targetView"});
         destroy(targetView);
+    }
+};
+
+struct EventData : Il2CppObject {
+    static Class GetClass() {
+        static Class mclass = Class("ExitGames.Client.Photon", "EventData");
+        return mclass;
+    }
+
+    BNM::Types::byte GetCode() {
+        static Field<BNM::Types::byte> Code = GetClass().GetField("Code");
+        Code.SetInstance(this);
+        return Code();
+    }
+    BNM::Types::byte GetSenderKey() {
+        static Field<BNM::Types::byte> SenderKey = GetClass().GetField("SenderKey");
+        SenderKey.SetInstance(this);
+        return SenderKey();
+    }
+    BNM::Types::byte CustomDataKey() {
+        static Field<BNM::Types::byte> CustomDataKey = GetClass().GetField("CustomDataKey");
+        CustomDataKey.SetInstance(this);
+        return CustomDataKey();
+    }
+    BNM::IL2CPP::Il2CppObject* GetCustomData() {
+        static Method<BNM::IL2CPP::Il2CppObject*> get_CustomData = GetClass().GetMethod("get_CustomData");
+        return get_CustomData[this]();
     }
 };
