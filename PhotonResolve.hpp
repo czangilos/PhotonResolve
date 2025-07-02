@@ -949,6 +949,10 @@ struct Player : IL2CPP::Il2CppObject {
         static Method<bool> setCustomPropertiesM = GetClass().GetMethod("SetCustomProperties", 3);
         return setCustomPropertiesM[this](propertiesToSet, nullptr, nullptr);
     }
+    Hashtable* GetCustomProperties() {
+        static Method<Hashtable*> CustomProperties = GetClass().GetMethod("get_CustomProperties");
+        return CustomProperties[this]();
+    }
 };
 
 struct AuthenticationValues : IL2CPP::Il2CppObject {
