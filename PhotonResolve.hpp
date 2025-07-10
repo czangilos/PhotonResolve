@@ -435,7 +435,7 @@ struct SendOptions
 {
     int DeliveryMode;
     bool Encrypt;
-    byte Channel;
+    BNM::Types::byte Channel;
 
     void SetReliability(bool reliability) {
         this->DeliveryMode = (reliability ? DeliveryMode::Reliable : DeliveryMode::Unreliable);
@@ -1412,7 +1412,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
     }
 };
 
-struct EventData : Il2CppObject {
+struct EventData : BNM::IL2CPP::Il2CppObject {
     static Class GetClass() {
         static Class mclass = Class("ExitGames.Client.Photon", "EventData");
         return mclass;
