@@ -518,55 +518,65 @@ struct AppSettings : IL2CPP::Il2CppObject {
 
     std::string GetAppIdRealtime() {
         static Field<String*> appIdRealtimeF = GetClass().GetField("AppIdRealtime");
-        return appIdRealtimeF[this].Get()->str();
+        appIdRealtimeF.SetInstance(this);
+        return appIdRealtimeF.Get()->str();
     }
 
     void SetAppIdRealtime(std::string value) {
         static Field<String*> appIdRealtimeF = GetClass().GetField("AppIdRealtime");
-        appIdRealtimeF[this].Set(CreateMonoString(value));
+        appIdRealtimeF.SetInstance(this);
+        appIdRealtimeF.Set(CreateMonoString(value));
     }
 
 
     std::string GetAppIdFusion() {
         static Field<String*> appIdRealtimeF = GetClass().GetField("AppIdFusion");
-        return appIdRealtimeF[this].Get()->str();
+        appIdRealtimeF.SetInstance(this);
+        return appIdRealtimeF.Get()->str();
     }
 
     void SetAppIdFusion(std::string value) {
         static Field<String*> AppIdFusionF = GetClass().GetField("AppIdFusion");
-        AppIdFusionF[this].Set(CreateMonoString(value));
+        AppIdFusionF.SetInstance(this);
+        AppIdFusionF.Set(CreateMonoString(value));
     }
 
     std::string GetAppIdChat() {
         static Field<String*> AppIdChatF = GetClass().GetField("AppIdChat");
-        return AppIdChatF[this].Get()->str();
+        AppIdChatF.SetInstance(this);
+        return AppIdChatF.Get()->str();
     }
 
     void SetAppIdChat(std::string value) {
         static Field<String*> AppIdChatF = GetClass().GetField("AppIdChat");
-        AppIdChatF[this].Set(CreateMonoString(value));
+        AppIdChatF.SetInstance(this);
+        AppIdChatF.Set(CreateMonoString(value));
     }
 
 
     std::string GetAppIdVoice() {
         static Field<String*> AppIdVoiceF = GetClass().GetField("AppIdVoice");
-        return AppIdVoiceF[this].Get()->str();
+        AppIdVoiceF.SetInstance(this);
+        return AppIdVoiceF.Get()->str();
     }
 
     void SetAppIdVoice(std::string value) {
         static Field<String*> AppIdVoiceF = GetClass().GetField("AppIdVoice");
-        AppIdVoiceF[this].Set(CreateMonoString(value));
+        AppIdVoiceF.SetInstance(this);
+        AppIdVoiceF.Set(CreateMonoString(value));
     }
 
 
     std::string GetAppVersion() {
         static Field<String*> AppVersionF = GetClass().GetField("AppVersion");
-        return AppVersionF[this].Get()->str();
+        AppVersionF.SetInstance(this);
+        return AppVersionF.Get()->str();
     }
 
     void SetAppVersion(std::string value) {
         static Field<String*> AppVersionF = GetClass().GetField("AppVersion");
-        AppVersionF[this].Set(CreateMonoString(value));
+        AppVersionF.SetInstance(this);
+        AppVersionF.Set(CreateMonoString(value));
     }
 
     void SetUseNameServer(bool value) {
@@ -583,35 +593,41 @@ struct AppSettings : IL2CPP::Il2CppObject {
 
     std::string GetFixedRegion() {
         static Field<String*> FixedRegionF = GetClass().GetField("FixedRegion");
-        return FixedRegionF[this].Get()->str();
+        FixedRegionF.SetInstance(this);
+        return FixedRegionF.Get()->str();
     }
 
     void SetFixedRegion(std::string value) {
         static Field<String*> FixedRegionF = GetClass().GetField("FixedRegion");
-        FixedRegionF[this].Set(CreateMonoString(value));
+        FixedRegionF.SetInstance(this);
+        FixedRegionF.Set(CreateMonoString(value));
     }
 
 
 
     std::string GetBestRegionSummaryFromStorage() {
         static Field<String*> BestRegionSummaryFromStorageF = GetClass().GetField("BestRegionSummaryFromStorage");
-        return BestRegionSummaryFromStorageF[this].Get()->str();
+        BestRegionSummaryFromStorageF.SetInstance(this);
+        return BestRegionSummaryFromStorageF.Get()->str();
     }
 
     void SetBestRegionSummaryFromStorage(std::string value) {
         static Field<String*> BestRegionSummaryFromStorageF = GetClass().GetField("BestRegionSummaryFromStorage");
-        BestRegionSummaryFromStorageF[this].Set(CreateMonoString(value));
+        BestRegionSummaryFromStorageF.SetInstance(this);
+        BestRegionSummaryFromStorageF.Set(CreateMonoString(value));
     }
 
 
     std::string GetServer() {
         static Field<String*> ServerF = GetClass().GetField("Server");
-        return ServerF[this].Get()->str();
+        ServerF.SetInstance(this);
+        return ServerF.Get()->str();
     }
 
     void SetServer(std::string value) {
         static Field<String*> ServerF = GetClass().GetField("Server");
-        ServerF[this].Set(CreateMonoString(value));
+        ServerF.SetInstance(this);
+        ServerF.Set(CreateMonoString(value));
     }
 
 
@@ -630,23 +646,27 @@ struct AppSettings : IL2CPP::Il2CppObject {
 
     std::string GetProxyServer() {
         static Field<String*> ProxyServerF = GetClass().GetField("ProxyServer");
-        return ProxyServerF[this].Get()->str();
+        ProxyServerF.SetInstance(this);
+        return ProxyServerF.Get()->str();
     }
 
     void SetProxyServer(std::string value) {
         static Field<String*> ProxyServerF = GetClass().GetField("ProxyServer");
-        ProxyServerF[this].Set(CreateMonoString(value));
+        ProxyServerF.SetInstance(this);
+        ProxyServerF.Set(CreateMonoString(value));
     }
 
 
     ConnectionProtocol* GetProtocol() {
         static Field<ConnectionProtocol*> ProtocolF = GetClass().GetField("Protocol");
-        return ProtocolF[this].Get();
+        ProtocolF.SetInstance(this);
+        return ProtocolF.Get();
     }
 
     void SetProtocol(ConnectionProtocol* value) {
         static Field<ConnectionProtocol*> ProtocolF = GetClass().GetField("Protocol");
-        ProtocolF[this].Set(value);
+        ProtocolF.SetInstance(this);
+        ProtocolF.Set(value);
     }
 
 
@@ -665,12 +685,14 @@ struct AppSettings : IL2CPP::Il2CppObject {
 
     AuthModeOption* GetAuthMode() {
         static Field<AuthModeOption*> AuthModeF = GetClass().GetField("AuthMode");
-        return AuthModeF[this].Get();
+        AuthModeF.SetInstance(this);
+        return AuthModeF.Get();
     }
 
     void SetAuthMode(AuthModeOption* value) {
         static Field<AuthModeOption*> AuthModeF = GetClass().GetField("AuthMode");
-        AuthModeF[this].Set(value);
+        AuthModeF.SetInstance(this);
+        AuthModeF.Set(value);
     }
 
 
@@ -689,12 +711,14 @@ struct AppSettings : IL2CPP::Il2CppObject {
 
     DebugLevel* GetNetworkLogging() {
         static Field<DebugLevel*> NetworkLoggingF = GetClass().GetField("NetworkLogging");
-        return NetworkLoggingF[this].Get();
+        NetworkLoggingF.SetInstance(this);
+        return NetworkLoggingF.Get();
     }
 
     void SetNetworkLogging(DebugLevel* value) {
         static Field<DebugLevel*> NetworkLoggingF = GetClass().GetField("NetworkLogging");
-        NetworkLoggingF[this].Set(value);
+        NetworkLoggingF.SetInstance(this);
+        NetworkLoggingF.Set(value);
     }
 };
 
@@ -733,32 +757,38 @@ struct ServerSettings : ScriptableObject {
 
     AppSettings* GetAppSettings(){
         static Field<AppSettings*> appSettingsF = GetClass().GetField("AppSettings");
-        return appSettingsF[this].Get();
+        appSettingsF.SetInstance(this);
+        return appSettingsF.Get();
     }
 
     void SetAppSettings(AppSettings* settings){
         static Field<AppSettings*> appSettingsF = GetClass().GetField("AppSettings");
-        return appSettingsF[this].Set(settings);
+        appSettingsF.SetInstance(this);
+        return appSettingsF.Set(settings);
     }
 
     void SetDevRegion(std::string devRegion) {
         static Field<String*> devRegionF = GetClass().GetField("DevRegion");
-        devRegionF[this].Set(CreateMonoString(devRegion));
+        devRegionF.SetInstance(this);
+        devRegionF.Set(CreateMonoString(devRegion));
     }
 
     std::string GetDevRegion() {
         static Field<String*> devRegionF = GetClass().GetField("DevRegion");
-        return devRegionF[this].Get()->str();
+        devRegionF.SetInstance(this);
+        return devRegionF.Get()->str();
     }
 
     PunLogLevel* GetPunLogLevel() {
         static Field<PunLogLevel*> PunLogLevelF = GetClass().GetField("PunLogging");
-        return PunLogLevelF[this].Get();
+        PunLogLevelF.SetInstance(this);
+        return PunLogLevelF.Get();
     }
 
     void SetPunLogLevel(PunLogLevel* level) {
         static Field<PunLogLevel*> PunLogLevelF = GetClass().GetField("PunLogging");
-        PunLogLevelF[this].Set(level);
+        PunLogLevelF.SetInstance(this);
+        PunLogLevelF.Set(level);
     }
 
     bool GetEnableSupportLogger() {
@@ -892,12 +922,14 @@ struct Player : IL2CPP::Il2CppObject {
 
     std::string GetDefaultName() {
         static Field<String*> defaultName = GetClass().GetField("defaultName");
-        return defaultName[this].Get()->str();
+        defaultName.SetInstance(this);
+        return defaultName.Get()->str();
     }
 
     void SetDefaultName(std::string name) {
         static Field<String*> defaultName = GetClass().GetField("defaultName");
-        defaultName[this].Set(CreateMonoString(name));
+        defaultName.SetInstance(this);
+        defaultName.Set(CreateMonoString(name));
     }
 
     std::string GetUserId(){
@@ -1046,24 +1078,26 @@ struct TypedLobby : IL2CPP::Il2CppObject {
 
     std::string GetName() {
         static Field<String*> nameF = GetClass().GetField("Name");
-        return nameF[this].Get()->str();
+        nameF.SetInstance(this);
+        return nameF.Get()->str();
     }
 
     void SetName(std::string name) {
         static Field<String*> nameF = GetClass().GetField("Name");
-        nameF[this].Set(CreateMonoString(name));
+        nameF.SetInstance(this);
+        nameF.Set(CreateMonoString(name));
     }
 
     LobbyType GetLobbyType() {
         static Field<LobbyType> lType = GetClass().GetField("Type");
         lType.SetInstance(this);
-        return lType.Get(); // i dont know why but when i do [this] it errors out :cry:
+        return lType.Get();
     }
 
     void SetLobbyType(LobbyType type) {
         static Field<LobbyType> lType = GetClass().GetField("Type");
         lType.SetInstance(this);
-        lType.Set(type); // i dont know why but when i do [this] it errors out :cry:
+        lType.Set(type);
     }
 
     static TypedLobby* GetDefault() {
