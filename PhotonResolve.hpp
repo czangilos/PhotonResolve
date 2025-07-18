@@ -3,7 +3,32 @@
 #include "BNMResolve.hpp"
 #include <vector>
 #include <cstdint>
+#include <BNM/BasicMonoStructures.hpp>
+#include <BNM/Class.hpp>
+#include <BNM/ClassesManagement.hpp>
+#include <BNM/ComplexMonoStructures.hpp>
+#include <BNM/Coroutine.hpp>
+#include <BNM/DebugMessages.hpp>
+#include <BNM/Defaults.hpp>
+#include <BNM/Delegates.hpp>
+#include <BNM/Event.hpp>
+#include <BNM/EventBase.hpp>
+#include <BNM/EventBase.hpp>
+#include <BNM/Exceptions.hpp>
+#include <BNM/Field.hpp>
+#include <BNM/FieldBase.hpp>
+#include <BNM/Il2CppHeaders.hpp>
+#include <BNM/Image.hpp>
+#include <BNM/Loading.hpp>
+#include <BNM/Method.hpp>
+#include <BNM/MethodBase.hpp>
+#include <BNM/Operators.hpp>
+#include <BNM/Property.hpp>
+#include <BNM/PropertyBase.hpp>
+#include <BNM/UnityStructures.hpp>
+#include <BNM/Utils.hpp>
 
+using namespace BNM;
 struct NetPlayer;
 struct Player;
 struct Hashtable;
@@ -372,6 +397,16 @@ struct PhotonView : Behaviour {
         setViewId[this](value);
     }
 
+    void SetControllerActor(int v) {
+        static Method<int> setControllerActor = GetClass().GetMethod("set_controllerActorNr", 1);
+        setControllerActor[this](v);
+    }
+
+    int GetControllerActor() {
+        static Method<int> setControllerActor = GetClass().GetMethod("get_controllerActorNr", 1);
+        return setControllerActor[this]();
+    }
+
     Player* GetOwner() {
         static Method<Player*> getOwner = GetClass().GetMethod("get_Owner", 0);
         return getOwner[this]();
@@ -695,8 +730,6 @@ struct AppSettings : IL2CPP::Il2CppObject {
         AuthModeF.Set(value);
     }
 
-
-
     void SetEnableLobbyStatistics(bool value) {
         static Field<bool> EnableLobbyStatisticsF = GetClass().GetField("EnableLobbyStatistics");
         EnableLobbyStatisticsF.SetInstance( this);
@@ -721,8 +754,6 @@ struct AppSettings : IL2CPP::Il2CppObject {
         NetworkLoggingF.Set(value);
     }
 };
-
-
 
 struct ServerSettings : ScriptableObject {
     static Class GetClass(){
@@ -757,38 +788,32 @@ struct ServerSettings : ScriptableObject {
 
     AppSettings* GetAppSettings(){
         static Field<AppSettings*> appSettingsF = GetClass().GetField("AppSettings");
-        appSettingsF.SetInstance(this);
-        return appSettingsF.Get();
+        return appSettingsF[this].Get();
     }
 
     void SetAppSettings(AppSettings* settings){
         static Field<AppSettings*> appSettingsF = GetClass().GetField("AppSettings");
-        appSettingsF.SetInstance(this);
-        return appSettingsF.Set(settings);
+        return appSettingsF[this].Set(settings);
     }
 
     void SetDevRegion(std::string devRegion) {
         static Field<String*> devRegionF = GetClass().GetField("DevRegion");
-        devRegionF.SetInstance(this);
-        devRegionF.Set(CreateMonoString(devRegion));
+        devRegionF[this].Set(CreateMonoString(devRegion));
     }
 
     std::string GetDevRegion() {
         static Field<String*> devRegionF = GetClass().GetField("DevRegion");
-        devRegionF.SetInstance(this);
-        return devRegionF.Get()->str();
+        return devRegionF[this].Get()->str();
     }
 
     PunLogLevel* GetPunLogLevel() {
         static Field<PunLogLevel*> PunLogLevelF = GetClass().GetField("PunLogging");
-        PunLogLevelF.SetInstance(this);
-        return PunLogLevelF.Get();
+        return PunLogLevelF[this].Get();
     }
 
     void SetPunLogLevel(PunLogLevel* level) {
         static Field<PunLogLevel*> PunLogLevelF = GetClass().GetField("PunLogging");
-        PunLogLevelF.SetInstance(this);
-        PunLogLevelF.Set(level);
+        PunLogLevelF[this].Set(level);
     }
 
     bool GetEnableSupportLogger() {
@@ -834,7 +859,8 @@ struct ServerSettings : ScriptableObject {
     }
 };
 
-struct Hashtable : Structures::Mono::Dictionary<BNM::IL2CPP::Il2CppObject*, BNM::IL2CPP::Il2CppObject*> {
+struct Hashtable : Dictionary<BNM::IL2CPP::Il2CppObject*, BNM::IL2CPP::Il2CppObject*> {
+
     static Class GetClass(){
         static Class cached = Class("ExitGames.Client.Photon", "Hashtable");
         return cached;
@@ -917,19 +943,18 @@ struct Player : IL2CPP::Il2CppObject {
 
     void SetNickname(std::string nickname) {
         static Method<void> setNicknameM = GetClass().GetMethod("set_NickName", 1);
-        setNicknameM[this](CreateMonoString(nickname));
+        setNicknameM.SetInstance(this);
+        setNicknameM(CreateMonoString(nickname));
     }
 
     std::string GetDefaultName() {
         static Field<String*> defaultName = GetClass().GetField("defaultName");
-        defaultName.SetInstance(this);
-        return defaultName.Get()->str();
+        return defaultName[this].Get()->str();
     }
 
     void SetDefaultName(std::string name) {
         static Field<String*> defaultName = GetClass().GetField("defaultName");
-        defaultName.SetInstance(this);
-        defaultName.Set(CreateMonoString(name));
+        defaultName[this].Set(CreateMonoString(name));
     }
 
     std::string GetUserId(){
@@ -1005,7 +1030,8 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
 
     void SetAuthType(CustomAuthenticationType type) {
         static Method<void> setAuthType = GetClass().GetMethod("set_AuthType", 1);
-        return setAuthType[this](type);
+        setAuthType.SetInstance(this);
+        return setAuthType(type);
     }
 
     std::string GetAuthGetParameters() {
@@ -1048,21 +1074,16 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
         setAuthPostData[this](byteData);
     }
 
-    void SetAuthPostData(Dictionary<String*, IL2CPP::Il2CppObject*>* dictData) {
-        static Method<void> setAuthPostData = GetClass().GetMethod("SetAuthPostData", {"dictData"});
-        setAuthPostData[this](dictData);
-    }
-
     void AddAuthParameter(std::string key, std::string value) {
         static Method<void> addAuthParameter = GetClass().GetMethod("AddAuthParameter", 2);
-        addAuthParameter[this](CreateMonoString(key), CreateMonoString(value));
+        addAuthParameter.SetInstance(this);
+        addAuthParameter(CreateMonoString(key), CreateMonoString(value));
     }
 
     std::string ToString() {
         static Method<String*> toString = GetClass().GetMethod("ToString", 0);
         return toString[this]()->str();
     }
-
 };
 
 struct TypedLobby : IL2CPP::Il2CppObject {
@@ -1078,26 +1099,24 @@ struct TypedLobby : IL2CPP::Il2CppObject {
 
     std::string GetName() {
         static Field<String*> nameF = GetClass().GetField("Name");
-        nameF.SetInstance(this);
-        return nameF.Get()->str();
+        return nameF[this].Get()->str();
     }
 
     void SetName(std::string name) {
         static Field<String*> nameF = GetClass().GetField("Name");
-        nameF.SetInstance(this);
-        nameF.Set(CreateMonoString(name));
+        nameF[this].Set(CreateMonoString(name));
     }
 
     LobbyType GetLobbyType() {
         static Field<LobbyType> lType = GetClass().GetField("Type");
         lType.SetInstance(this);
-        return lType.Get();
+        return lType.Get(); // i dont know why but when i do [this] it errors out :cry:
     }
 
     void SetLobbyType(LobbyType type) {
         static Field<LobbyType> lType = GetClass().GetField("Type");
         lType.SetInstance(this);
-        lType.Set(type);
+        lType.Set(type); // i dont know why but when i do [this] it errors out :cry:
     }
 
     static TypedLobby* GetDefault() {
@@ -1291,7 +1310,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
     static bool JoinRandomOrCreateRoom(Hashtable* expectedCustomRoomProperties = nullptr, uint8_t expectedMaxPlayers = 0, MatchmakingMode matchingType = MatchmakingMode::FillRoom, TypedLobby* typedLobby = nullptr, std::string sqlLobbyFilter = nullptr, std::string roomName = nullptr, RoomOptions* roomOptions = nullptr, Array<String*>* expectedUsers = nullptr) {
         static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomOrCreateRoom", {"expectedCustomRoomProperties", "expectedMaxPlayers", "matchingType", "typedLobby", "sqlLobbyFilter", "roomName", "roomOptions", "expectedUsers"});
         return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers, matchingType, typedLobby,
-                               CreateMonoString(sqlLobbyFilter), CreateMonoString(roomName),
+                               CreateMonoString(sqlLobbyFilter), CreateMonoString(roomName), roomOptions,
                                expectedUsers);
     }
 
