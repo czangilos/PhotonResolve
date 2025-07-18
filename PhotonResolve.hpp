@@ -372,6 +372,16 @@ struct PhotonView : Behaviour {
         setViewId[this](value);
     }
 
+    void SetControllerActor(int v) {
+        static Method<int> setControllerActor = GetClass().GetMethod("set_ControllerActorNr", 1);
+        setControllerActor[this](v);
+    }
+
+    int GetControllerActor() {
+        static Method<int> setControllerActor = GetClass().GetMethod("get_ControllerActorNr", 1);
+        return setControllerActor[this]();
+    }
+
     Player* GetOwner() {
         static Method<Player*> getOwner = GetClass().GetMethod("get_Owner", 0);
         return getOwner[this]();
