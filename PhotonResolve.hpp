@@ -20,6 +20,8 @@ struct AuthenticationValues;
 struct TypedLobby;
 struct RoomOptions;
 
+
+
 enum RpcTarget {
     All,
     Others,
@@ -703,6 +705,8 @@ struct AppSettings : IL2CPP::Il2CppObject {
         AuthModeF.Set(value);
     }
 
+
+
     void SetEnableLobbyStatistics(bool value) {
         static Field<bool> EnableLobbyStatisticsF = GetClass().GetField("EnableLobbyStatistics");
         EnableLobbyStatisticsF.SetInstance( this);
@@ -727,6 +731,8 @@ struct AppSettings : IL2CPP::Il2CppObject {
         NetworkLoggingF.Set(value);
     }
 };
+
+
 
 struct ServerSettings : ScriptableObject {
     static Class GetClass(){
@@ -761,32 +767,38 @@ struct ServerSettings : ScriptableObject {
 
     AppSettings* GetAppSettings(){
         static Field<AppSettings*> appSettingsF = GetClass().GetField("AppSettings");
-        return appSettingsF[this].Get();
+        appSettingsF.SetInstance(this);
+        return appSettingsF.Get();
     }
 
     void SetAppSettings(AppSettings* settings){
         static Field<AppSettings*> appSettingsF = GetClass().GetField("AppSettings");
-        return appSettingsF[this].Set(settings);
+        appSettingsF.SetInstance(this);
+        return appSettingsF.Set(settings);
     }
 
     void SetDevRegion(std::string devRegion) {
         static Field<String*> devRegionF = GetClass().GetField("DevRegion");
-        devRegionF[this].Set(CreateMonoString(devRegion));
+        devRegionF.SetInstance(this);
+        devRegionF.Set(CreateMonoString(devRegion));
     }
 
     std::string GetDevRegion() {
         static Field<String*> devRegionF = GetClass().GetField("DevRegion");
-        return devRegionF[this].Get()->str();
+        devRegionF.SetInstance(this);
+        return devRegionF.Get()->str();
     }
 
     PunLogLevel* GetPunLogLevel() {
         static Field<PunLogLevel*> PunLogLevelF = GetClass().GetField("PunLogging");
-        return PunLogLevelF[this].Get();
+        PunLogLevelF.SetInstance(this);
+        return PunLogLevelF.Get();
     }
 
     void SetPunLogLevel(PunLogLevel* level) {
         static Field<PunLogLevel*> PunLogLevelF = GetClass().GetField("PunLogging");
-        PunLogLevelF[this].Set(level);
+        PunLogLevelF.SetInstance(this);
+        PunLogLevelF.Set(level);
     }
 
     bool GetEnableSupportLogger() {
@@ -832,8 +844,7 @@ struct ServerSettings : ScriptableObject {
     }
 };
 
-struct Hashtable : Dictionary<BNM::IL2CPP::Il2CppObject*, BNM::IL2CPP::Il2CppObject*> {
-
+struct Hashtable : Structures::Mono::Dictionary<BNM::IL2CPP::Il2CppObject*, BNM::IL2CPP::Il2CppObject*> {
     static Class GetClass(){
         static Class cached = Class("ExitGames.Client.Photon", "Hashtable");
         return cached;
@@ -916,18 +927,19 @@ struct Player : IL2CPP::Il2CppObject {
 
     void SetNickname(std::string nickname) {
         static Method<void> setNicknameM = GetClass().GetMethod("set_NickName", 1);
-        setNicknameM.SetInstance(this);
-        setNicknameM(CreateMonoString(nickname));
+        setNicknameM[this](CreateMonoString(nickname));
     }
 
     std::string GetDefaultName() {
         static Field<String*> defaultName = GetClass().GetField("defaultName");
-        return defaultName[this].Get()->str();
+        defaultName.SetInstance(this);
+        return defaultName.Get()->str();
     }
 
     void SetDefaultName(std::string name) {
         static Field<String*> defaultName = GetClass().GetField("defaultName");
-        defaultName[this].Set(CreateMonoString(name));
+        defaultName.SetInstance(this);
+        defaultName.Set(CreateMonoString(name));
     }
 
     std::string GetUserId(){
@@ -1003,8 +1015,7 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
 
     void SetAuthType(CustomAuthenticationType type) {
         static Method<void> setAuthType = GetClass().GetMethod("set_AuthType", 1);
-        setAuthType.SetInstance(this);
-        return setAuthType(type);
+        return setAuthType[this](type);
     }
 
     std::string GetAuthGetParameters() {
@@ -1047,16 +1058,21 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
         setAuthPostData[this](byteData);
     }
 
+    void SetAuthPostData(Dictionary<String*, IL2CPP::Il2CppObject*>* dictData) {
+        static Method<void> setAuthPostData = GetClass().GetMethod("SetAuthPostData", {"dictData"});
+        setAuthPostData[this](dictData);
+    }
+
     void AddAuthParameter(std::string key, std::string value) {
         static Method<void> addAuthParameter = GetClass().GetMethod("AddAuthParameter", 2);
-        addAuthParameter.SetInstance(this);
-        addAuthParameter(CreateMonoString(key), CreateMonoString(value));
+        addAuthParameter[this](CreateMonoString(key), CreateMonoString(value));
     }
 
     std::string ToString() {
         static Method<String*> toString = GetClass().GetMethod("ToString", 0);
         return toString[this]()->str();
     }
+
 };
 
 struct TypedLobby : IL2CPP::Il2CppObject {
@@ -1072,24 +1088,26 @@ struct TypedLobby : IL2CPP::Il2CppObject {
 
     std::string GetName() {
         static Field<String*> nameF = GetClass().GetField("Name");
-        return nameF[this].Get()->str();
+        nameF.SetInstance(this);
+        return nameF.Get()->str();
     }
 
     void SetName(std::string name) {
         static Field<String*> nameF = GetClass().GetField("Name");
-        nameF[this].Set(CreateMonoString(name));
+        nameF.SetInstance(this);
+        nameF.Set(CreateMonoString(name));
     }
 
     LobbyType GetLobbyType() {
         static Field<LobbyType> lType = GetClass().GetField("Type");
         lType.SetInstance(this);
-        return lType.Get(); // i dont know why but when i do [this] it errors out :cry:
+        return lType.Get();
     }
 
     void SetLobbyType(LobbyType type) {
         static Field<LobbyType> lType = GetClass().GetField("Type");
         lType.SetInstance(this);
-        lType.Set(type); // i dont know why but when i do [this] it errors out :cry:
+        lType.Set(type);
     }
 
     static TypedLobby* GetDefault() {
