@@ -1283,7 +1283,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
     static bool JoinRandomOrCreateRoom(Hashtable* expectedCustomRoomProperties = nullptr, uint8_t expectedMaxPlayers = 0, MatchmakingMode matchingType = MatchmakingMode::FillRoom, TypedLobby* typedLobby = nullptr, std::string sqlLobbyFilter = nullptr, std::string roomName = nullptr, RoomOptions* roomOptions = nullptr, Array<String*>* expectedUsers = nullptr) {
         static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomOrCreateRoom", {"expectedCustomRoomProperties", "expectedMaxPlayers", "matchingType", "typedLobby", "sqlLobbyFilter", "roomName", "roomOptions", "expectedUsers"});
         return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers, matchingType, typedLobby,
-                               CreateMonoString(sqlLobbyFilter), CreateMonoString(roomName), roomOptions,
+                               CreateMonoString(sqlLobbyFilter), CreateMonoString(roomName),
                                expectedUsers);
     }
 
