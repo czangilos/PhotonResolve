@@ -1,6 +1,6 @@
 #pragma once
 
-#include "BNMResolve.hpp"
+#include "BNMResolve.h"
 #include <vector>
 #include <cstdint>
 
@@ -402,12 +402,12 @@ struct PhotonView : Behaviour {
         return getView(component);
     }
 
-    void RPC(std::string methodName, RpcTarget target, Array<IL2CPP::Il2CppObject*>* parameters) {
+    void RPC(const std::string& methodName, RpcTarget target, Array<IL2CPP::Il2CppObject*>* parameters) {
         static Method<void> rpc = GetClass().GetMethod("RPC", {"methodName", "target", "parameters"});
         rpc[this](CreateMonoString(methodName), target, parameters);
     }
 
-    void RPC(std::string methodName, Player* targetPlayer, Array<IL2CPP::Il2CppObject*>* parameters) {
+    void RPC(const std::string& methodName, Player* targetPlayer, Array<IL2CPP::Il2CppObject*>* parameters) {
         static Method<void> rpc = GetClass().GetMethod("RPC", {"methodName", "targetPlayer", "parameters"});
         rpc[this](CreateMonoString(methodName), targetPlayer, parameters);
     }
@@ -515,12 +515,12 @@ struct AppSettings : IL2CPP::Il2CppObject {
         return toStringFullM[this]()->str();
     }
 
-    static bool IsAppId(std::string val){
+    static bool IsAppId(const std::string& val){
         static Method<bool> isAppIdM = GetClass().GetMethod("IsAppId", 1);
         return isAppIdM(CreateMonoString(val));
     }
 
-    std::string HideAppId(std::string appId) {
+    std::string HideAppId(const std::string& appId) {
         static Method<String*> hideAppIdM = GetClass().GetMethod("HideAppId", 1);
         return hideAppIdM(CreateMonoString(appId))->str();
     }
@@ -532,7 +532,7 @@ struct AppSettings : IL2CPP::Il2CppObject {
         return appIdRealtimeF.Get()->str();
     }
 
-    void SetAppIdRealtime(std::string value) {
+    void SetAppIdRealtime(const std::string& value) {
         static Field<String*> appIdRealtimeF = GetClass().GetField("AppIdRealtime");
         appIdRealtimeF.SetInstance(this);
         appIdRealtimeF.Set(CreateMonoString(value));
@@ -545,7 +545,7 @@ struct AppSettings : IL2CPP::Il2CppObject {
         return appIdRealtimeF.Get()->str();
     }
 
-    void SetAppIdFusion(std::string value) {
+    void SetAppIdFusion(const std::string& value) {
         static Field<String*> AppIdFusionF = GetClass().GetField("AppIdFusion");
         AppIdFusionF.SetInstance(this);
         AppIdFusionF.Set(CreateMonoString(value));
@@ -557,7 +557,7 @@ struct AppSettings : IL2CPP::Il2CppObject {
         return AppIdChatF.Get()->str();
     }
 
-    void SetAppIdChat(std::string value) {
+    void SetAppIdChat(const std::string& value) {
         static Field<String*> AppIdChatF = GetClass().GetField("AppIdChat");
         AppIdChatF.SetInstance(this);
         AppIdChatF.Set(CreateMonoString(value));
@@ -570,7 +570,7 @@ struct AppSettings : IL2CPP::Il2CppObject {
         return AppIdVoiceF.Get()->str();
     }
 
-    void SetAppIdVoice(std::string value) {
+    void SetAppIdVoice(const std::string& value) {
         static Field<String*> AppIdVoiceF = GetClass().GetField("AppIdVoice");
         AppIdVoiceF.SetInstance(this);
         AppIdVoiceF.Set(CreateMonoString(value));
@@ -583,7 +583,7 @@ struct AppSettings : IL2CPP::Il2CppObject {
         return AppVersionF.Get()->str();
     }
 
-    void SetAppVersion(std::string value) {
+    void SetAppVersion(const std::string& value) {
         static Field<String*> AppVersionF = GetClass().GetField("AppVersion");
         AppVersionF.SetInstance(this);
         AppVersionF.Set(CreateMonoString(value));
@@ -607,7 +607,7 @@ struct AppSettings : IL2CPP::Il2CppObject {
         return FixedRegionF.Get()->str();
     }
 
-    void SetFixedRegion(std::string value) {
+    void SetFixedRegion(const std::string& value) {
         static Field<String*> FixedRegionF = GetClass().GetField("FixedRegion");
         FixedRegionF.SetInstance(this);
         FixedRegionF.Set(CreateMonoString(value));
@@ -621,7 +621,7 @@ struct AppSettings : IL2CPP::Il2CppObject {
         return BestRegionSummaryFromStorageF.Get()->str();
     }
 
-    void SetBestRegionSummaryFromStorage(std::string value) {
+    void SetBestRegionSummaryFromStorage(const std::string& value) {
         static Field<String*> BestRegionSummaryFromStorageF = GetClass().GetField("BestRegionSummaryFromStorage");
         BestRegionSummaryFromStorageF.SetInstance(this);
         BestRegionSummaryFromStorageF.Set(CreateMonoString(value));
@@ -634,7 +634,7 @@ struct AppSettings : IL2CPP::Il2CppObject {
         return ServerF.Get()->str();
     }
 
-    void SetServer(std::string value) {
+    void SetServer(const std::string& value) {
         static Field<String*> ServerF = GetClass().GetField("Server");
         ServerF.SetInstance(this);
         ServerF.Set(CreateMonoString(value));
@@ -660,7 +660,7 @@ struct AppSettings : IL2CPP::Il2CppObject {
         return ProxyServerF.Get()->str();
     }
 
-    void SetProxyServer(std::string value) {
+    void SetProxyServer(const std::string& value) {
         static Field<String*> ProxyServerF = GetClass().GetField("ProxyServer");
         ProxyServerF.SetInstance(this);
         ProxyServerF.Set(CreateMonoString(value));
@@ -745,12 +745,12 @@ struct ServerSettings : ScriptableObject {
         return type;
     }
 
-    void UseCloud(std::string cloudAppId, std::string code) {
+    void UseCloud(const std::string& cloudAppId, const std::string& code) {
         static Method<void> useCloudM = GetClass().GetMethod("UseCloud", 2);
         return useCloudM[this](CreateMonoString(cloudAppId), CreateMonoString(code));
     }
 
-    static bool IsAppId(std::string val) {
+    static bool IsAppId(const std::string& val) {
         static Method<bool> isAppIdM = GetClass().GetMethod("IsAppId", 1);
         return isAppIdM(CreateMonoString(val));
     }
@@ -777,7 +777,7 @@ struct ServerSettings : ScriptableObject {
         return appSettingsF.Set(settings);
     }
 
-    void SetDevRegion(std::string devRegion) {
+    void SetDevRegion(const std::string& devRegion) {
         static Field<String*> devRegionF = GetClass().GetField("DevRegion");
         devRegionF.SetInstance(this);
         devRegionF.Set(CreateMonoString(devRegion));
@@ -925,7 +925,7 @@ struct Player : IL2CPP::Il2CppObject {
         return getNicknameM[this]()->str();
     }
 
-    void SetNickname(std::string nickname) {
+    void SetNickname(const std::string& nickname) {
         static Method<void> setNicknameM = GetClass().GetMethod("set_NickName", 1);
         setNicknameM[this](CreateMonoString(nickname));
     }
@@ -936,7 +936,7 @@ struct Player : IL2CPP::Il2CppObject {
         return defaultName.Get()->str();
     }
 
-    void SetDefaultName(std::string name) {
+    void SetDefaultName(const std::string& name) {
         static Field<String*> defaultName = GetClass().GetField("defaultName");
         defaultName.SetInstance(this);
         defaultName.Set(CreateMonoString(name));
@@ -947,7 +947,7 @@ struct Player : IL2CPP::Il2CppObject {
         return getUserIdM[this]()->str();
     }
 
-    void SetUserId(std::string userId){
+    void SetUserId(const std::string& userId){
         static Method<void> setUserIdM = GetClass().GetMethod("set_UserId", 1);
         setUserIdM[this](CreateMonoString(userId));
     }
@@ -1023,7 +1023,7 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
         return getAuthGetParameters[this]()->str();
     }
 
-    void SetAuthGetParameters(std::string parameters) {
+    void SetAuthGetParameters(const std::string& parameters) {
         static Method<void> setAuthGetParameters = GetClass().GetMethod("set_AuthGetParameters", 1);
         setAuthGetParameters[this](CreateMonoString(parameters));
     }
@@ -1043,12 +1043,12 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
         return getUserId[this]()->str();
     }
 
-    void SetUserId(std::string userid){
+    void SetUserId(const std::string& userid){
         static Method<void> setUserId = GetClass().GetMethod("set_UserId", 1);
         setUserId[this](CreateMonoString(userid));
     }
 
-    void SetAuthPostData(std::string stringData) {
+    void SetAuthPostData(const std::string& stringData) {
         static Method<void> setAuthPostData = GetClass().GetMethod("SetAuthPostData", {"stringData"});
         setAuthPostData[this](CreateMonoString(stringData));
     }
@@ -1063,7 +1063,7 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
         setAuthPostData[this](dictData);
     }
 
-    void AddAuthParameter(std::string key, std::string value) {
+    void AddAuthParameter(const std::string& key, const std::string& value) {
         static Method<void> addAuthParameter = GetClass().GetMethod("AddAuthParameter", 2);
         addAuthParameter[this](CreateMonoString(key), CreateMonoString(value));
     }
@@ -1092,7 +1092,7 @@ struct TypedLobby : IL2CPP::Il2CppObject {
         return nameF.Get()->str();
     }
 
-    void SetName(std::string name) {
+    void SetName(const std::string& name) {
         static Field<String*> nameF = GetClass().GetField("Name");
         nameF.SetInstance(this);
         nameF.Set(CreateMonoString(name));
@@ -1132,6 +1132,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         return type;
     }
 
+
     static void AddCallbackTarget(Il2CppObject* target) {
         static Method<void> AddCallbackTarget = GetClass().GetMethod("AddCallbackTarget");
         AddCallbackTarget(target);
@@ -1161,7 +1162,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         return inRoom();
     }
 
-    static bool ConnectToRegion(std::string region) {
+    static bool ConnectToRegion(const std::string& region) {
         static Method<bool> Cregion = GetClass().GetMethod("ConnectToRegion", {"region"});
         return Cregion(CreateMonoString(region));
     }
@@ -1262,7 +1263,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         return getGameVersionM()->str();
     }
 
-    static void SetGameVersion(std::string gameVersion) {
+    static void SetGameVersion(const std::string& gameVersion) {
         static Method<void> setGameVersionM = GetClass().GetMethod("set_GameVersion", 1);
         return setGameVersionM(CreateMonoString(gameVersion));
     }
@@ -1292,35 +1293,35 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers);
     }
 
-    static bool JoinRandomRoom(Hashtable* expectedCustomRoomProperties, uint8_t expectedMaxPlayers, MatchmakingMode matchingType, TypedLobby* typedLobby, std::string sqlLobbyFilter, Array<String*>* expectedUsers = nullptr) {
+    static bool JoinRandomRoom(Hashtable* expectedCustomRoomProperties, uint8_t expectedMaxPlayers, MatchmakingMode matchingType, TypedLobby* typedLobby, const std::string& sqlLobbyFilter, Array<String*>* expectedUsers = nullptr) {
         static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomRoom", {"expectedCustomRoomProperties", "expectedMaxPlayers", "matchingType", "typedLobby", "sqlLobbyFilter", "expectedUsers"});
         return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers, matchingType, typedLobby,
                                CreateMonoString(sqlLobbyFilter), expectedUsers);
     }
 
-    static bool JoinRandomOrCreateRoom(Hashtable* expectedCustomRoomProperties = nullptr, uint8_t expectedMaxPlayers = 0, MatchmakingMode matchingType = MatchmakingMode::FillRoom, TypedLobby* typedLobby = nullptr, std::string sqlLobbyFilter = nullptr, std::string roomName = nullptr, RoomOptions* roomOptions = nullptr, Array<String*>* expectedUsers = nullptr) {
+    static bool JoinRandomOrCreateRoom(Hashtable* expectedCustomRoomProperties = nullptr, uint8_t expectedMaxPlayers = 0, MatchmakingMode matchingType = MatchmakingMode::FillRoom, TypedLobby* typedLobby = nullptr, const std::string& sqlLobbyFilter = nullptr, const std::string& roomName = nullptr, RoomOptions* roomOptions = nullptr, Array<String*>* expectedUsers = nullptr) {
         static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomOrCreateRoom", {"expectedCustomRoomProperties", "expectedMaxPlayers", "matchingType", "typedLobby", "sqlLobbyFilter", "roomName", "roomOptions", "expectedUsers"});
         return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers, matchingType, typedLobby,
                                CreateMonoString(sqlLobbyFilter), CreateMonoString(roomName),
                                expectedUsers);
     }
 
-    static bool CreateRoom(std::string roomName, RoomOptions* roomOptions = nullptr, TypedLobby* typedLobby = nullptr, Array<String*>* expectedUsers = nullptr) {
+    static bool CreateRoom(const std::string& roomName, RoomOptions* roomOptions = nullptr, TypedLobby* typedLobby = nullptr, Array<String*>* expectedUsers = nullptr) {
         static Method<bool> createRoomM = GetClass().GetMethod("CreateRoom", {"roomName", "roomOptions", "typedLobby", "expectedUsers"});
         return createRoomM(CreateMonoString(roomName), roomOptions, typedLobby, expectedUsers);
     }
 
-    static bool JoinOrCreateRoom(std::string roomName, RoomOptions* roomOptions, TypedLobby* typedLobby, Array<String*>* expectedUsers = nullptr) {
+    static bool JoinOrCreateRoom(const std::string& roomName, RoomOptions* roomOptions, TypedLobby* typedLobby, Array<String*>* expectedUsers = nullptr) {
         static Method<bool> joinOrCreateRoomM = GetClass().GetMethod("JoinOrCreateRoom", {"roomName", "roomOptions", "typedLobby", "expectedUsers"});
         return joinOrCreateRoomM(CreateMonoString(roomName), roomOptions, typedLobby, expectedUsers);
     }
 
-    static bool JoinRoom(std::string roomName, Array<String*>* expectedUsers = nullptr) {
+    static bool JoinRoom(const std::string& roomName, Array<String*>* expectedUsers = nullptr) {
         static Method<bool> joinRoomM = GetClass().GetMethod("JoinRoom", {"roomName", "expectedUsers"});
         return joinRoomM(CreateMonoString(roomName), expectedUsers);
     }
 
-    static bool RejoinRoom(std::string roomName) {
+    static bool RejoinRoom(const std::string& roomName) {
         static Method<bool> RejoinRoomM = GetClass().GetMethod("RejoinRoom", {"roomName"});
         return RejoinRoomM(CreateMonoString(roomName));
     }
@@ -1360,7 +1361,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         loadLevelM(levelNumber);
     }
 
-    static void LoadLevel(std::string levelName) {
+    static void LoadLevel(const std::string& levelName) {
         static Method<void> loadLevelM = GetClass().GetMethod("LoadLevel", 1);
         loadLevelM(CreateMonoString(levelName));
     }
@@ -1415,7 +1416,7 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         return punVersion.Get()->str();
     }
 
-    static bool GetCustomRoomList(TypedLobby* typedLobby, std::string sqlLobbyFilter) {
+    static bool GetCustomRoomList(TypedLobby* typedLobby, const std::string& sqlLobbyFilter) {
         static Method<bool> getCustomRoomList = GetClass().GetMethod("GetCustomRoomList", {"typedLobby", "sqlLobbyFilter"});
         return getCustomRoomList(typedLobby, CreateMonoString(sqlLobbyFilter));
     }
@@ -1430,17 +1431,17 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
         return getM();
     }
 
-    static GameObject* Instantiate(std::string prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
+    static GameObject* Instantiate(const std::string& prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
         static Method<GameObject*> instantiate = GetClass().GetMethod("Instantiate");
         return instantiate(CreateMonoString(prefabName), position, rotation, group, data);
     }
 
-    static GameObject* InstantiateRoomObject(std::string prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
+    static GameObject* InstantiateRoomObject(const std::string& prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
         static Method<GameObject*> instantiate = GetClass().GetMethod("InstantiateRoomObject");
         return instantiate(CreateMonoString(prefabName), position, rotation, group, data);
     }
 
-    static GameObject* InstantiateSceneObject(std::string prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
+    static GameObject* InstantiateSceneObject(const std::string& prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
         static Method<GameObject*> instantiate = GetClass().GetMethod("InstantiateSceneObject");
         return instantiate(CreateMonoString(prefabName), position, rotation, group, data);
     }
