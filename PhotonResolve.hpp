@@ -1,5 +1,7 @@
 #pragma once
 
+#define Obfuscate(str) str // change this to ur obf
+
 #include "BNMResolve.h"
 #include <vector>
 #include <cstdint>
@@ -93,7 +95,7 @@ enum LobbyType : uint8_t
 
 struct RoomOptions : IL2CPP::Il2CppObject {
     static Class GetClass(){
-        static Class cached = Class("Photon.Realtime", "RoomOptions");
+        static Class cached = Class(Obfuscate("Photon.Realtime"), Obfuscate("RoomOptions"));
         return cached;
     }
 
@@ -103,166 +105,166 @@ struct RoomOptions : IL2CPP::Il2CppObject {
     }
 
     bool GetIsVisible() {
-        static Method<bool> getisVisible = GetClass().GetMethod("get_IsVisible", 0);
+        static Method<bool> getisVisible = GetClass().GetMethod(Obfuscate("get_IsVisible"), 0);
         return getisVisible[this]();
     }
 
     void SetIsVisible(bool visible) {
-        static Method<void> setisVisible = GetClass().GetMethod("set_IsVisible", 1);
+        static Method<void> setisVisible = GetClass().GetMethod(Obfuscate("set_IsVisible"), 1);
         setisVisible[this](visible);
     }
 
 
     bool GetIsOpen() {
-        static Method<bool> getIsOpen = GetClass().GetMethod("get_IsOpen", 0);
+        static Method<bool> getIsOpen = GetClass().GetMethod(Obfuscate("get_IsOpen"), 0);
         return getIsOpen[this]();
     }
 
     void SetIsOpen(bool open) {
-        static Method<void> setIsOpen = GetClass().GetMethod("set_IsOpen", 1);
+        static Method<void> setIsOpen = GetClass().GetMethod(Obfuscate("set_IsOpen"), 1);
         setIsOpen[this](open);
     }
 
 
     bool GetCleanupCacheOnLeave() {
-        static Method<bool> getCleanupCacheOnLeave = GetClass().GetMethod("get_CleanupCacheOnLeave", 0);
+        static Method<bool> getCleanupCacheOnLeave = GetClass().GetMethod(Obfuscate("get_CleanupCacheOnLeave"), 0);
         return getCleanupCacheOnLeave[this]();
     }
 
     void SetCleanupCacheOnLeave(bool value) {
-        static Method<void> setCleanupCacheOnLeave = GetClass().GetMethod("set_CleanupCacheOnLeave", 1);
+        static Method<void> setCleanupCacheOnLeave = GetClass().GetMethod(Obfuscate("set_CleanupCacheOnLeave"), 1);
         setCleanupCacheOnLeave[this](value);
     }
 
 
     bool GetSuppressRoomEvents() {
-        static Method<bool> getSuppressRoomEvents = GetClass().GetMethod("get_SuppressRoomEvents", 0);
+        static Method<bool> getSuppressRoomEvents = GetClass().GetMethod(Obfuscate("get_SuppressRoomEvents"), 0);
         return getSuppressRoomEvents[this]();
     }
 
     void SetSuppressRoomEvents(bool value) {
-        static Method<void> setSuppressRoomEvents = GetClass().GetMethod("set_SuppressRoomEvents", 1);
+        static Method<void> setSuppressRoomEvents = GetClass().GetMethod(Obfuscate("set_SuppressRoomEvents"), 1);
         setSuppressRoomEvents[this](value);
     }
 
 
     bool GetSuppressPlayerInfo() {
-        static Method<bool> getSuppressPlayerInfo = GetClass().GetMethod("get_SuppressPlayerInfo", 0);
+        static Method<bool> getSuppressPlayerInfo = GetClass().GetMethod(Obfuscate("get_SuppressPlayerInfo"), 0);
         return getSuppressPlayerInfo[this]();
     }
 
     void SetSuppressPlayerInfo(bool value) {
-        static Method<void> setSuppressPlayerInfo = GetClass().GetMethod("set_SuppressPlayerInfo", 1);
+        static Method<void> setSuppressPlayerInfo = GetClass().GetMethod(Obfuscate("set_SuppressPlayerInfo"), 1);
         setSuppressPlayerInfo[this](value);
     }
 
 
     bool GetPublishUserId() {
-        static Method<bool> getPublishUserId = GetClass().GetMethod("get_PublishUserId", 0);
+        static Method<bool> getPublishUserId = GetClass().GetMethod(Obfuscate("get_PublishUserId"), 0);
         return getPublishUserId[this]();
     }
 
     void SetPublishUserId(bool value) {
-        static Method<void> setPublishUserId = GetClass().GetMethod("set_PublishUserId", 1);
+        static Method<void> setPublishUserId = GetClass().GetMethod(Obfuscate("set_PublishUserId"), 1);
         setPublishUserId[this](value);
     }
 
 
     bool GetDeleteNullProperties() {
-        static Method<bool> getDeleteNullProperties = GetClass().GetMethod("get_DeleteNullProperties", 0);
+        static Method<bool> getDeleteNullProperties = GetClass().GetMethod(Obfuscate("get_DeleteNullProperties"), 0);
         return getDeleteNullProperties[this]();
     }
 
     void SetDeleteNullProperties(bool value) {
-        static Method<void> setDeleteNullProperties = GetClass().GetMethod("set_DeleteNullProperties", 1);
+        static Method<void> setDeleteNullProperties = GetClass().GetMethod(Obfuscate("set_DeleteNullProperties"), 1);
         setDeleteNullProperties[this](value);
     }
 
 
     bool GetBroadcastPropsChangeToAll() {
-        static Method<bool> getBroadcastPropsChangeToAll = GetClass().GetMethod("get_BroadcastPropsChangeToAll", 0);
+        static Method<bool> getBroadcastPropsChangeToAll = GetClass().GetMethod(Obfuscate("get_BroadcastPropsChangeToAll"), 0);
         return getBroadcastPropsChangeToAll[this]();
     }
 
     void SetBroadcastPropsChangeToAll(bool value) {
-        static Method<void> setBroadcastPropsChangeToAll = GetClass().GetMethod("set_BroadcastPropsChangeToAll", 1);
+        static Method<void> setBroadcastPropsChangeToAll = GetClass().GetMethod(Obfuscate("set_BroadcastPropsChangeToAll"), 1);
         setBroadcastPropsChangeToAll[this](value);
     }
 
 
     uint8_t GetMaxPlayers(){
-        static Field<uint8_t> maxPlayers = GetClass().GetField("MaxPlayers");
+        static Field<uint8_t> maxPlayers = GetClass().GetField(Obfuscate("MaxPlayers"));
         maxPlayers.SetInstance(this);
         return maxPlayers.Get();
     }
 
     void SetMaxPlayers(uint8_t value){
-        static Field<uint8_t> maxPlayers = GetClass().GetField("MaxPlayers");
+        static Field<uint8_t> maxPlayers = GetClass().GetField(Obfuscate("MaxPlayers"));
         maxPlayers.SetInstance(this);
         maxPlayers.Set(value);
     }
 
 
     int GetPlayerTtl(){
-        static Field<int> maxPlayerTtl = GetClass().GetField("PlayerTtl");
+        static Field<int> maxPlayerTtl = GetClass().GetField(Obfuscate("PlayerTtl"));
         maxPlayerTtl.SetInstance(this);
         return maxPlayerTtl.Get();
     }
 
     void SetPlayerTtl(int value){
-        static Field<int> maxPlayerTtl = GetClass().GetField("PlayerTtl");
+        static Field<int> maxPlayerTtl = GetClass().GetField(Obfuscate("PlayerTtl"));
         maxPlayerTtl.SetInstance(this);
         maxPlayerTtl.Set(value);
     }
 
 
     int GetEmptyRoomTtl(){
-        static Field<int> emptyRoomTtl = GetClass().GetField("EmptyRoomTtl");
+        static Field<int> emptyRoomTtl = GetClass().GetField(Obfuscate("EmptyRoomTtl"));
         emptyRoomTtl.SetInstance(this);
         return emptyRoomTtl.Get();
     }
 
     void SetEmptyRoomTtl(int value){
-        static Field<int> emptyRoomTtl = GetClass().GetField("EmptyRoomTtl");
+        static Field<int> emptyRoomTtl = GetClass().GetField(Obfuscate("EmptyRoomTtl"));
         emptyRoomTtl.SetInstance(this);
         emptyRoomTtl.Set(value);
     }
 
 
     Hashtable* GetCustomRoomProperties(){
-        static Field<Hashtable*> customRoomProperties = GetClass().GetField("CustomRoomProperties");
+        static Field<Hashtable*> customRoomProperties = GetClass().GetField(Obfuscate("CustomRoomProperties"));
         customRoomProperties.SetInstance(this);
         return customRoomProperties.Get();
     }
 
     void SetCustomRoomProperties(Hashtable* value){
-        static Field<Hashtable*> customRoomProperties = GetClass().GetField("CustomRoomProperties");
+        static Field<Hashtable*> customRoomProperties = GetClass().GetField(Obfuscate("CustomRoomProperties"));
         customRoomProperties.SetInstance(this);
         customRoomProperties.Set(value);
     }
 
 
     std::vector<String*> GetCustomRoomPropertiesForLobby() {
-        static Field<Array<String*>*> customRoomPropertiesForLobby = GetClass().GetField("CustomRoomPropertiesForLobby");
+        static Field<Array<String*>*> customRoomPropertiesForLobby = GetClass().GetField(Obfuscate("CustomRoomPropertiesForLobby"));
         customRoomPropertiesForLobby.SetInstance(this);
         return customRoomPropertiesForLobby.Get()->ToVector();
     }
 
     void SetCustomRoomPropertiesForLobby(Array<String*>* properties) {
-        static Field<Array<String*>*> customRoomPropertiesForLobby = GetClass().GetField("CustomRoomPropertiesForLobby");
+        static Field<Array<String*>*> customRoomPropertiesForLobby = GetClass().GetField(Obfuscate("CustomRoomPropertiesForLobby"));
         customRoomPropertiesForLobby.SetInstance(this);
         customRoomPropertiesForLobby.Set(properties);
     }
 
 
     std::vector<String*> GetPlugins() {
-        static Field<Array<String*>*> plugins = GetClass().GetField("Plugins");
+        static Field<Array<String*>*> plugins = GetClass().GetField(Obfuscate("Plugins"));
         plugins.SetInstance(this);
         return plugins.Get()->ToVector();
     }
 
     void SetPlugins(Array<String*>* properties) {
-        static Field<Array<String*>*> plugins = GetClass().GetField("Plugins");
+        static Field<Array<String*>*> plugins = GetClass().GetField(Obfuscate("Plugins"));
         plugins.SetInstance(this);
         plugins.Set(properties);
     }
@@ -270,7 +272,7 @@ struct RoomOptions : IL2CPP::Il2CppObject {
 
 struct RoomInfo : IL2CPP::Il2CppObject {
     static Class GetClass(){
-        static Class cached = Class("Photon.Realtime", "RoomInfo");
+        static Class cached = Class(Obfuscate("Photon.Realtime"), Obfuscate("RoomInfo"));
         return cached;
     }
 
@@ -285,7 +287,7 @@ struct RoomInfo : IL2CPP::Il2CppObject {
 
 struct Room : RoomInfo {
     static Class GetClass(){
-        static Class cached = Class("Photon.Realtime", "Room");
+        static Class cached = Class(Obfuscate("Photon.Realtime"), Obfuscate("Room"));
         return cached;
     }
 
@@ -296,54 +298,54 @@ struct Room : RoomInfo {
 
 
     std::string GetName() {
-        static Method<String*> getName = GetClass().GetMethod("get_Name", 0);
+        static Method<String*> getName = GetClass().GetMethod(Obfuscate("get_Name"), 0);
         return getName[this]()->str();
     }
 
     uint8_t GetPlayerCount() {
-        static Method<uint8_t> getPlayerCount = GetClass().GetMethod("get_PlayerCount", 0);
+        static Method<uint8_t> getPlayerCount = GetClass().GetMethod(Obfuscate("get_PlayerCount"), 0);
         return getPlayerCount[this]();
     }
 
     void SetPlayerCount(uint8_t count) {
-        static Method<void> setPlayerCount = GetClass().GetMethod("set_PlayerCount", 1);
+        static Method<void> setPlayerCount = GetClass().GetMethod(Obfuscate("set_PlayerCount"), 1);
         setPlayerCount[this](count);
     }
 
     uint8_t GetMaxPlayers() {
-        static Method<uint8_t> getMaxPlayers = GetClass().GetMethod("get_MaxPlayers", 0);
+        static Method<uint8_t> getMaxPlayers = GetClass().GetMethod(Obfuscate("get_MaxPlayers"), 0);
         return getMaxPlayers[this]();
     }
 
     bool GetIsOpen() {
-        static Method<bool> getIsOpen = GetClass().GetMethod("get_IsOpen", 0);
+        static Method<bool> getIsOpen = GetClass().GetMethod(Obfuscate("get_IsOpen"), 0);
         return getIsOpen[this]();
     }
 
     void SetIsOpen(bool is) {
-        static Method<void> setIsOpen = GetClass().GetMethod("set_IsOpen", 1);
+        static Method<void> setIsOpen = GetClass().GetMethod(Obfuscate("set_IsOpen"), 1);
         setIsOpen[this](is);
     }
 
     bool GetIsVisible() {
-        static Method<bool> getIsVisible = GetClass().GetMethod("get_IsVisible", 0);
+        static Method<bool> getIsVisible = GetClass().GetMethod(Obfuscate("get_IsVisible"), 0);
         return getIsVisible[this]();
     }
 
     void SetIsVisible(bool is) {
-        static Method<void> setIsVisible = GetClass().GetMethod("set_IsVisible", 1);
+        static Method<void> setIsVisible = GetClass().GetMethod(Obfuscate("set_IsVisible"), 1);
         setIsVisible[this](is);
     }
 
     std::string ToStringFull() {
-        static Method<String*> toStringFull = GetClass().GetMethod("ToStringFull", 0);
+        static Method<String*> toStringFull = GetClass().GetMethod(Obfuscate("ToStringFull"), 0);
         return toStringFull[this]()->str();
     }
 };
 
 struct PhotonView : Behaviour {
     static Class GetClass(){
-        static Class cached = Class("Photon.Pun", "PhotonView");
+        static Class cached = Class(Obfuscate("Photon.Pun"), Obfuscate("PhotonView"));
         return cached;
     }
 
@@ -353,62 +355,62 @@ struct PhotonView : Behaviour {
     }
 
     bool GetIsMine() {
-        static Method<bool> isMine = GetClass().GetMethod("get_IsMine", 0);
+        static Method<bool> isMine = GetClass().GetMethod(Obfuscate("get_IsMine"), 0);
         return isMine[this]();
     }
 
     void SetIsMine(bool value) {
-        static Method<void> isMine = GetClass().GetMethod("set_IsMine", 1);
+        static Method<void> isMine = GetClass().GetMethod(Obfuscate("set_IsMine"), 1);
         isMine[this](value);
     }
 
     int GetViewID() {
-        static Method<int> getViewId = GetClass().GetMethod("get_ViewID", 0);
+        static Method<int> getViewId = GetClass().GetMethod(Obfuscate("get_ViewID"), 0);
         return getViewId[this]();
     }
 
     void SetViewID(int value) {
-        static Method<void> setViewId = GetClass().GetMethod("set_ViewID", 1);
+        static Method<void> setViewId = GetClass().GetMethod(Obfuscate("set_ViewID"), 1);
         setViewId[this](value);
     }
 
     void SetControllerActor(int v) {
-        static Method<int> setControllerActor = GetClass().GetMethod("set_ControllerActorNr", 1);
+        static Method<int> setControllerActor = GetClass().GetMethod(Obfuscate("set_ControllerActorNr"), 1);
         setControllerActor[this](v);
     }
 
     int GetControllerActor() {
-        static Method<int> setControllerActor = GetClass().GetMethod("get_ControllerActorNr", 1);
+        static Method<int> setControllerActor = GetClass().GetMethod(Obfuscate("get_ControllerActorNr"), 1);
         return setControllerActor[this]();
     }
 
     Player* GetOwner() {
-        static Method<Player*> getOwner = GetClass().GetMethod("get_Owner", 0);
+        static Method<Player*> getOwner = GetClass().GetMethod(Obfuscate("get_Owner"), 0);
         return getOwner[this]();
     }
 
     void SetOwner(Player* player) {
-        static Method<Player*> setOwner = GetClass().GetMethod("set_Owner", 1);
+        static Method<Player*> setOwner = GetClass().GetMethod(Obfuscate("set_Owner"), 1);
         setOwner[this](player);
     }
 
     static PhotonView* Get(GameObject* gameObj) {
-        static Method<PhotonView*> getView = GetClass().GetMethod("Get", { "gameObj" });
+        static Method<PhotonView*> getView = GetClass().GetMethod(Obfuscate("Get"), { Obfuscate("gameObj") });
         return getView(gameObj);
     }
 
     static PhotonView* Get(Component* component) {
-        static Method<PhotonView*> getView = GetClass().GetMethod("Get", { "component" });
+        static Method<PhotonView*> getView = GetClass().GetMethod(Obfuscate("Get"), { Obfuscate("component") });
         return getView(component);
     }
 
     void RPC(const std::string& methodName, RpcTarget target, Array<IL2CPP::Il2CppObject*>* parameters) {
-        static Method<void> rpc = GetClass().GetMethod("RPC", {"methodName", "target", "parameters"});
+        static Method<void> rpc = GetClass().GetMethod(Obfuscate("RPC"), {Obfuscate("methodName"), Obfuscate("target"), Obfuscate("parameters")});
         rpc[this](CreateMonoString(methodName), target, parameters);
     }
 
     void RPC(const std::string& methodName, Player* targetPlayer, Array<IL2CPP::Il2CppObject*>* parameters) {
-        static Method<void> rpc = GetClass().GetMethod("RPC", {"methodName", "targetPlayer", "parameters"});
+        static Method<void> rpc = GetClass().GetMethod(Obfuscate("RPC"), {Obfuscate("methodName"), Obfuscate("targetPlayer"), Obfuscate("parameters")});
         rpc[this](CreateMonoString(methodName), targetPlayer, parameters);
     }
 };
@@ -416,7 +418,7 @@ struct PhotonView : Behaviour {
 struct RaiseEventOptions : IL2CPP::Il2CppObject {
 
     static Class GetClass(){
-        static Class cached = Class("Photon.Realtime", "RaiseEventOptions");
+        static Class cached = Class(Obfuscate("Photon.Realtime"), Obfuscate("RaiseEventOptions"));
         return cached;
     }
 
@@ -426,7 +428,7 @@ struct RaiseEventOptions : IL2CPP::Il2CppObject {
     }
 
     static RaiseEventOptions* GetDefault(){
-        static Field<RaiseEventOptions*> defaultF = GetClass().GetField("Default");
+        static Field<RaiseEventOptions*> defaultF = GetClass().GetField(Obfuscate("Default"));
         return defaultF.Get();
     }
 
@@ -469,7 +471,7 @@ struct SendOptions
 
 struct ScriptableObject : Object {
     static Class GetClass(){
-        static Class cached = Class("UnityEngine", "ScriptableObject");
+        static Class cached = Class(Obfuscate("UnityEngine"), Obfuscate("ScriptableObject"));
         return cached;
     }
 
@@ -481,7 +483,7 @@ struct ScriptableObject : Object {
 
 struct AppSettings : IL2CPP::Il2CppObject {
     static Class GetClass(){
-        static Class cached = Class("Photon.Realtime", "AppSettings");
+        static Class cached = Class(Obfuscate("Photon.Realtime"), Obfuscate("AppSettings"));
         return cached;
     }
 
@@ -491,124 +493,124 @@ struct AppSettings : IL2CPP::Il2CppObject {
     }
 
     bool GetIsMasterServerAdress() {
-        static Method<bool> getIsMasterServerAdressM = GetClass().GetMethod("get_IsMasterServerAddress", 0);
+        static Method<bool> getIsMasterServerAdressM = GetClass().GetMethod(Obfuscate("get_IsMasterServerAddress"), 0);
         return getIsMasterServerAdressM[this]();
     }
 
     bool GetIsBestRegion() {
-        static Method<bool> getIsBestRegionM = GetClass().GetMethod("get_IsBestRegion", 0);
+        static Method<bool> getIsBestRegionM = GetClass().GetMethod(Obfuscate("get_IsBestRegion"), 0);
         return getIsBestRegionM[this]();
     }
 
     bool GetIsDefaultNameServer() {
-        static Method<bool> getIsDefaultNameServerM = GetClass().GetMethod("get_IsDefaultNameServer", 0);
+        static Method<bool> getIsDefaultNameServerM = GetClass().GetMethod(Obfuscate("get_IsDefaultNameServer"), 0);
         return getIsDefaultNameServerM[this]();
     }
 
     bool GetIsDefaultPort() {
-        static Method<bool> getIsDefaultPortM = GetClass().GetMethod("get_IsDefaultPort", 0);
+        static Method<bool> getIsDefaultPortM = GetClass().GetMethod(Obfuscate("get_IsDefaultPort"), 0);
         return getIsDefaultPortM[this]();
     }
 
     std::string ToStringFull(){
-        static Method<String*> toStringFullM = GetClass().GetMethod("ToStringFull", 0);
+        static Method<String*> toStringFullM = GetClass().GetMethod(Obfuscate("ToStringFull"), 0);
         return toStringFullM[this]()->str();
     }
 
     static bool IsAppId(const std::string& val){
-        static Method<bool> isAppIdM = GetClass().GetMethod("IsAppId", 1);
+        static Method<bool> isAppIdM = GetClass().GetMethod(Obfuscate("IsAppId"), 1);
         return isAppIdM(CreateMonoString(val));
     }
 
     std::string HideAppId(const std::string& appId) {
-        static Method<String*> hideAppIdM = GetClass().GetMethod("HideAppId", 1);
+        static Method<String*> hideAppIdM = GetClass().GetMethod(Obfuscate("HideAppId"), 1);
         return hideAppIdM(CreateMonoString(appId))->str();
     }
 
 
     std::string GetAppIdRealtime() {
-        static Field<String*> appIdRealtimeF = GetClass().GetField("AppIdRealtime");
+        static Field<String*> appIdRealtimeF = GetClass().GetField(Obfuscate("AppIdRealtime"));
         appIdRealtimeF.SetInstance(this);
         return appIdRealtimeF.Get()->str();
     }
 
     void SetAppIdRealtime(const std::string& value) {
-        static Field<String*> appIdRealtimeF = GetClass().GetField("AppIdRealtime");
+        static Field<String*> appIdRealtimeF = GetClass().GetField(Obfuscate("AppIdRealtime"));
         appIdRealtimeF.SetInstance(this);
         appIdRealtimeF.Set(CreateMonoString(value));
     }
 
 
     std::string GetAppIdFusion() {
-        static Field<String*> appIdRealtimeF = GetClass().GetField("AppIdFusion");
+        static Field<String*> appIdRealtimeF = GetClass().GetField(Obfuscate("AppIdFusion"));
         appIdRealtimeF.SetInstance(this);
         return appIdRealtimeF.Get()->str();
     }
 
     void SetAppIdFusion(const std::string& value) {
-        static Field<String*> AppIdFusionF = GetClass().GetField("AppIdFusion");
+        static Field<String*> AppIdFusionF = GetClass().GetField(Obfuscate("AppIdFusion"));
         AppIdFusionF.SetInstance(this);
         AppIdFusionF.Set(CreateMonoString(value));
     }
 
     std::string GetAppIdChat() {
-        static Field<String*> AppIdChatF = GetClass().GetField("AppIdChat");
+        static Field<String*> AppIdChatF = GetClass().GetField(Obfuscate("AppIdChat"));
         AppIdChatF.SetInstance(this);
         return AppIdChatF.Get()->str();
     }
 
     void SetAppIdChat(const std::string& value) {
-        static Field<String*> AppIdChatF = GetClass().GetField("AppIdChat");
+        static Field<String*> AppIdChatF = GetClass().GetField(Obfuscate("AppIdChat"));
         AppIdChatF.SetInstance(this);
         AppIdChatF.Set(CreateMonoString(value));
     }
 
 
     std::string GetAppIdVoice() {
-        static Field<String*> AppIdVoiceF = GetClass().GetField("AppIdVoice");
+        static Field<String*> AppIdVoiceF = GetClass().GetField(Obfuscate("AppIdVoice"));
         AppIdVoiceF.SetInstance(this);
         return AppIdVoiceF.Get()->str();
     }
 
     void SetAppIdVoice(const std::string& value) {
-        static Field<String*> AppIdVoiceF = GetClass().GetField("AppIdVoice");
+        static Field<String*> AppIdVoiceF = GetClass().GetField(Obfuscate("AppIdVoice"));
         AppIdVoiceF.SetInstance(this);
         AppIdVoiceF.Set(CreateMonoString(value));
     }
 
 
     std::string GetAppVersion() {
-        static Field<String*> AppVersionF = GetClass().GetField("AppVersion");
+        static Field<String*> AppVersionF = GetClass().GetField(Obfuscate("AppVersion"));
         AppVersionF.SetInstance(this);
         return AppVersionF.Get()->str();
     }
 
     void SetAppVersion(const std::string& value) {
-        static Field<String*> AppVersionF = GetClass().GetField("AppVersion");
+        static Field<String*> AppVersionF = GetClass().GetField(Obfuscate("AppVersion"));
         AppVersionF.SetInstance(this);
         AppVersionF.Set(CreateMonoString(value));
     }
 
     void SetUseNameServer(bool value) {
-        static Field<bool> UseNameServerF = GetClass().GetField("UseNameServer");
+        static Field<bool> UseNameServerF = GetClass().GetField(Obfuscate("UseNameServer"));
         UseNameServerF.SetInstance( this);
         UseNameServerF.Set(value);
     }
 
     bool GetUseNameServer() {
-        static Field<bool> UseNameServerF = GetClass().GetField("UseNameServer");
+        static Field<bool> UseNameServerF = GetClass().GetField(Obfuscate("UseNameServer"));
         UseNameServerF.SetInstance(this);
         return UseNameServerF.Get();
     }
 
     std::string GetFixedRegion() {
-        static Field<String*> FixedRegionF = GetClass().GetField("FixedRegion");
+        static Field<String*> FixedRegionF = GetClass().GetField(Obfuscate("FixedRegion"));
         FixedRegionF.SetInstance(this);
         return FixedRegionF.Get()->str();
     }
 
     void SetFixedRegion(const std::string& value) {
-        static Field<String*> FixedRegionF = GetClass().GetField("FixedRegion");
+        static Field<String*> FixedRegionF = GetClass().GetField(Obfuscate("FixedRegion"));
         FixedRegionF.SetInstance(this);
         FixedRegionF.Set(CreateMonoString(value));
     }
@@ -616,91 +618,91 @@ struct AppSettings : IL2CPP::Il2CppObject {
 
 
     std::string GetBestRegionSummaryFromStorage() {
-        static Field<String*> BestRegionSummaryFromStorageF = GetClass().GetField("BestRegionSummaryFromStorage");
+        static Field<String*> BestRegionSummaryFromStorageF = GetClass().GetField(Obfuscate("BestRegionSummaryFromStorage"));
         BestRegionSummaryFromStorageF.SetInstance(this);
         return BestRegionSummaryFromStorageF.Get()->str();
     }
 
     void SetBestRegionSummaryFromStorage(const std::string& value) {
-        static Field<String*> BestRegionSummaryFromStorageF = GetClass().GetField("BestRegionSummaryFromStorage");
+        static Field<String*> BestRegionSummaryFromStorageF = GetClass().GetField(Obfuscate("BestRegionSummaryFromStorage"));
         BestRegionSummaryFromStorageF.SetInstance(this);
         BestRegionSummaryFromStorageF.Set(CreateMonoString(value));
     }
 
 
     std::string GetServer() {
-        static Field<String*> ServerF = GetClass().GetField("Server");
+        static Field<String*> ServerF = GetClass().GetField(Obfuscate("Server"));
         ServerF.SetInstance(this);
         return ServerF.Get()->str();
     }
 
     void SetServer(const std::string& value) {
-        static Field<String*> ServerF = GetClass().GetField("Server");
+        static Field<String*> ServerF = GetClass().GetField(Obfuscate("Server"));
         ServerF.SetInstance(this);
         ServerF.Set(CreateMonoString(value));
     }
 
 
     int GetPort() {
-        static Field<int> portF = GetClass().GetField("Port");
+        static Field<int> portF = GetClass().GetField(Obfuscate("Port"));
         portF.SetInstance(this);
         return portF.Get();
     }
 
     void SetServer(int value) {
-        static Field<int> portF = GetClass().GetField("Port");
+        static Field<int> portF = GetClass().GetField(Obfuscate("Port"));
         portF.SetInstance(this);
         portF.Set(value);
     }
 
 
     std::string GetProxyServer() {
-        static Field<String*> ProxyServerF = GetClass().GetField("ProxyServer");
+        static Field<String*> ProxyServerF = GetClass().GetField(Obfuscate("ProxyServer"));
         ProxyServerF.SetInstance(this);
         return ProxyServerF.Get()->str();
     }
 
     void SetProxyServer(const std::string& value) {
-        static Field<String*> ProxyServerF = GetClass().GetField("ProxyServer");
+        static Field<String*> ProxyServerF = GetClass().GetField(Obfuscate("ProxyServer"));
         ProxyServerF.SetInstance(this);
         ProxyServerF.Set(CreateMonoString(value));
     }
 
 
     ConnectionProtocol* GetProtocol() {
-        static Field<ConnectionProtocol*> ProtocolF = GetClass().GetField("Protocol");
+        static Field<ConnectionProtocol*> ProtocolF = GetClass().GetField(Obfuscate("Protocol"));
         ProtocolF.SetInstance(this);
         return ProtocolF.Get();
     }
 
     void SetProtocol(ConnectionProtocol* value) {
-        static Field<ConnectionProtocol*> ProtocolF = GetClass().GetField("Protocol");
+        static Field<ConnectionProtocol*> ProtocolF = GetClass().GetField(Obfuscate("Protocol"));
         ProtocolF.SetInstance(this);
         ProtocolF.Set(value);
     }
 
 
     void SetEnableProtocolFallback(bool value) {
-        static Field<bool> EnableProtocolFallbackF = GetClass().GetField("EnableProtocolFallback");
+        static Field<bool> EnableProtocolFallbackF = GetClass().GetField(Obfuscate("EnableProtocolFallback"));
         EnableProtocolFallbackF.SetInstance( this);
         EnableProtocolFallbackF.Set(value);
     }
 
     bool GetEnableProtocolFallback() {
-        static Field<bool> EnableProtocolFallbackF = GetClass().GetField("EnableProtocolFallback");
+        static Field<bool> EnableProtocolFallbackF = GetClass().GetField(Obfuscate("EnableProtocolFallback"));
         EnableProtocolFallbackF.SetInstance(this);
         return EnableProtocolFallbackF.Get();
     }
 
 
     AuthModeOption* GetAuthMode() {
-        static Field<AuthModeOption*> AuthModeF = GetClass().GetField("AuthMode");
+        static Field<AuthModeOption*> AuthModeF = GetClass().GetField(Obfuscate("AuthMode"));
         AuthModeF.SetInstance(this);
         return AuthModeF.Get();
     }
 
     void SetAuthMode(AuthModeOption* value) {
-        static Field<AuthModeOption*> AuthModeF = GetClass().GetField("AuthMode");
+        static Field<AuthModeOption*> AuthModeF = GetClass().GetField(Obfuscate("AuthMode"));
         AuthModeF.SetInstance(this);
         AuthModeF.Set(value);
     }
@@ -708,25 +710,25 @@ struct AppSettings : IL2CPP::Il2CppObject {
 
 
     void SetEnableLobbyStatistics(bool value) {
-        static Field<bool> EnableLobbyStatisticsF = GetClass().GetField("EnableLobbyStatistics");
+        static Field<bool> EnableLobbyStatisticsF = GetClass().GetField(Obfuscate("EnableLobbyStatistics"));
         EnableLobbyStatisticsF.SetInstance( this);
         EnableLobbyStatisticsF.Set(value);
     }
 
     bool GetEnableLobbyStatistics() {
-        static Field<bool> EnableLobbyStatisticsF = GetClass().GetField("EnableLobbyStatistics");
+        static Field<bool> EnableLobbyStatisticsF = GetClass().GetField(Obfuscate("EnableLobbyStatistics"));
         EnableLobbyStatisticsF.SetInstance(this);
         return EnableLobbyStatisticsF.Get();
     }
 
     DebugLevel* GetNetworkLogging() {
-        static Field<DebugLevel*> NetworkLoggingF = GetClass().GetField("NetworkLogging");
+        static Field<DebugLevel*> NetworkLoggingF = GetClass().GetField(Obfuscate("NetworkLogging"));
         NetworkLoggingF.SetInstance(this);
         return NetworkLoggingF.Get();
     }
 
     void SetNetworkLogging(DebugLevel* value) {
-        static Field<DebugLevel*> NetworkLoggingF = GetClass().GetField("NetworkLogging");
+        static Field<DebugLevel*> NetworkLoggingF = GetClass().GetField(Obfuscate("NetworkLogging"));
         NetworkLoggingF.SetInstance(this);
         NetworkLoggingF.Set(value);
     }
@@ -736,7 +738,7 @@ struct AppSettings : IL2CPP::Il2CppObject {
 
 struct ServerSettings : ScriptableObject {
     static Class GetClass(){
-        static Class cached = Class("Photon.Pun", "ServerSettings");
+        static Class cached = Class(Obfuscate("Photon.Pun"), Obfuscate("ServerSettings"));
         return cached;
     }
 
@@ -746,99 +748,99 @@ struct ServerSettings : ScriptableObject {
     }
 
     void UseCloud(const std::string& cloudAppId, const std::string& code) {
-        static Method<void> useCloudM = GetClass().GetMethod("UseCloud", 2);
+        static Method<void> useCloudM = GetClass().GetMethod(Obfuscate("UseCloud"), 2);
         return useCloudM[this](CreateMonoString(cloudAppId), CreateMonoString(code));
     }
 
     static bool IsAppId(const std::string& val) {
-        static Method<bool> isAppIdM = GetClass().GetMethod("IsAppId", 1);
+        static Method<bool> isAppIdM = GetClass().GetMethod(Obfuscate("IsAppId"), 1);
         return isAppIdM(CreateMonoString(val));
     }
 
     static std::string BestRegionSummaryInPreferences() {
-        static Method<String*> bestRegionSummaryM = GetClass().GetMethod("get_BestRegionSummaryInPreferences", 0);
+        static Method<String*> bestRegionSummaryM = GetClass().GetMethod(Obfuscate("get_BestRegionSummaryInPreferences"), 0);
         return bestRegionSummaryM()->str();
     }
 
     static void ResetBestRegionCodeInPreferences() {
-        static Method<void> bestRegionSummaryM = GetClass().GetMethod("ResetBestRegionCodeInPreferences", 0);
+        static Method<void> bestRegionSummaryM = GetClass().GetMethod(Obfuscate("ResetBestRegionCodeInPreferences"), 0);
         return bestRegionSummaryM();
     }
 
     AppSettings* GetAppSettings(){
-        static Field<AppSettings*> appSettingsF = GetClass().GetField("AppSettings");
+        static Field<AppSettings*> appSettingsF = GetClass().GetField(Obfuscate("AppSettings"));
         appSettingsF.SetInstance(this);
         return appSettingsF.Get();
     }
 
     void SetAppSettings(AppSettings* settings){
-        static Field<AppSettings*> appSettingsF = GetClass().GetField("AppSettings");
+        static Field<AppSettings*> appSettingsF = GetClass().GetField(Obfuscate("AppSettings"));
         appSettingsF.SetInstance(this);
         return appSettingsF.Set(settings);
     }
 
     void SetDevRegion(const std::string& devRegion) {
-        static Field<String*> devRegionF = GetClass().GetField("DevRegion");
+        static Field<String*> devRegionF = GetClass().GetField(Obfuscate("DevRegion"));
         devRegionF.SetInstance(this);
         devRegionF.Set(CreateMonoString(devRegion));
     }
 
     std::string GetDevRegion() {
-        static Field<String*> devRegionF = GetClass().GetField("DevRegion");
+        static Field<String*> devRegionF = GetClass().GetField(Obfuscate("DevRegion"));
         devRegionF.SetInstance(this);
         return devRegionF.Get()->str();
     }
 
     PunLogLevel* GetPunLogLevel() {
-        static Field<PunLogLevel*> PunLogLevelF = GetClass().GetField("PunLogging");
+        static Field<PunLogLevel*> PunLogLevelF = GetClass().GetField(Obfuscate("PunLogging"));
         PunLogLevelF.SetInstance(this);
         return PunLogLevelF.Get();
     }
 
     void SetPunLogLevel(PunLogLevel* level) {
-        static Field<PunLogLevel*> PunLogLevelF = GetClass().GetField("PunLogging");
+        static Field<PunLogLevel*> PunLogLevelF = GetClass().GetField(Obfuscate("PunLogging"));
         PunLogLevelF.SetInstance(this);
         PunLogLevelF.Set(level);
     }
 
     bool GetEnableSupportLogger() {
-        static Field<bool> enableSupportLoggerF = GetClass().GetField("EnableSupportLogger");
+        static Field<bool> enableSupportLoggerF = GetClass().GetField(Obfuscate("EnableSupportLogger"));
         enableSupportLoggerF.SetInstance(this);
         return enableSupportLoggerF.Get();
     }
 
     void SetEnableSupportLogger(bool value) {
-        static Field<bool> enableSupportLoggerF = GetClass().GetField("EnableSupportLogger");
+        static Field<bool> enableSupportLoggerF = GetClass().GetField(Obfuscate("EnableSupportLogger"));
         enableSupportLoggerF.SetInstance(this);
         enableSupportLoggerF.Set(value);
     }
 
     bool GetRunInBackground() {
-        static Field<bool> runInBackgroundF = GetClass().GetField("RunInBackground");
+        static Field<bool> runInBackgroundF = GetClass().GetField(Obfuscate("RunInBackground"));
         runInBackgroundF.SetInstance(this);
         return runInBackgroundF.Get();
     }
 
     void SetRunInBackground(bool value) {
-        static Field<bool> runInBackgroundF = GetClass().GetField("RunInBackground");
+        static Field<bool> runInBackgroundF = GetClass().GetField(Obfuscate("RunInBackground"));
         runInBackgroundF.SetInstance(this);
         runInBackgroundF.Set(value);
     }
 
     void SetStartInOfflineMode(bool value) {
-        static Field<bool> startInOfflineModeF = GetClass().GetField("StartInOfflineMode");
+        static Field<bool> startInOfflineModeF = GetClass().GetField(Obfuscate("StartInOfflineMode"));
         startInOfflineModeF.SetInstance(this);
         startInOfflineModeF.Set(value);
     }
 
     bool GetStartInOfflineMode() {
-        static Field<bool> startInOfflineModeF = GetClass().GetField("StartInOfflineMode");
+        static Field<bool> startInOfflineModeF = GetClass().GetField(Obfuscate("StartInOfflineMode"));
         startInOfflineModeF.SetInstance(this);
         return startInOfflineModeF.Get();
     }
 
     std::vector<String*> GetRPCList() {
-        static Field<List<String*>*> rpcListF = GetClass().GetField("RpcList");
+        static Field<List<String*>*> rpcListF = GetClass().GetField(Obfuscate("RpcList"));
         rpcListF.SetInstance(this);
         return rpcListF.Get()->ToVector();
     }
@@ -846,37 +848,37 @@ struct ServerSettings : ScriptableObject {
 
 struct Hashtable : Structures::Mono::Dictionary<BNM::IL2CPP::Il2CppObject*, BNM::IL2CPP::Il2CppObject*> {
     static Class GetClass(){
-        static Class cached = Class("ExitGames.Client.Photon", "Hashtable");
+        static Class cached = Class(Obfuscate("ExitGames.Client.Photon"), Obfuscate("Hashtable"));
         return cached;
     }
 
     void Add(uint8_t k, BNM::IL2CPP::Il2CppObject* v) {
-        static Method<void> Add = GetClass().GetMethod("Add");
+        static Method<void> Add = GetClass().GetMethod(Obfuscate("Add"));
         return Add[this](k,v);
     }
 
     void Set(IL2CPP::Il2CppObject* key, IL2CPP::Il2CppObject* value) {
-        static Method<void> setItem = GetClass().GetMethod("set_Item", {"key", "value"});
+        static Method<void> setItem = GetClass().GetMethod(Obfuscate("set_Item"), {Obfuscate("key"), Obfuscate("value")});
         setItem[this](key, value);
     }
 
     IL2CPP::Il2CppObject* Get(IL2CPP::Il2CppObject* key) {
-        static Method<IL2CPP::Il2CppObject*> getItem = GetClass().GetMethod("get_Item", {"key", "value"});
+        static Method<IL2CPP::Il2CppObject*> getItem = GetClass().GetMethod(Obfuscate("get_Item"), {Obfuscate("key"), Obfuscate("value")});
         return getItem[this](key);
     }
 
     bool ContainsKey(uint8_t key){
-        static Method<bool> ContainsKey = GetClass().GetMethod("ContainsKey");
+        static Method<bool> ContainsKey = GetClass().GetMethod(Obfuscate("ContainsKey"));
         return ContainsKey[this](key);
     }
 
     void Remove(uint8_t k){
-        static Method<void> Remove = GetClass().GetMethod("Remove");
+        static Method<void> Remove = GetClass().GetMethod(Obfuscate("Remove"));
         return Remove[this](k);
     }
 
     std::string ToString(){
-        static Method<String*> toString = GetClass().GetMethod("ToString");
+        static Method<String*> toString = GetClass().GetMethod(Obfuscate("ToString"));
         return toString[this]()->str();
     }
 
@@ -884,7 +886,7 @@ struct Hashtable : Structures::Mono::Dictionary<BNM::IL2CPP::Il2CppObject*, BNM:
 
 struct NetPlayer : IL2CPP::Il2CppObject {
     static Class GetClass(){
-        static Class cached = Class("", "NetPlayer");
+        static Class cached = Class(Obfuscate(""), Obfuscate("NetPlayer"));
         return cached;
     }
 
@@ -896,7 +898,7 @@ struct NetPlayer : IL2CPP::Il2CppObject {
 
 struct Player : IL2CPP::Il2CppObject {
     static Class GetClass(){
-        static Class cached = Class("Photon.Realtime", "Player", Image("PhotonRealtime.dll"));
+        static Class cached = Class(Obfuscate("Photon.Realtime"), Obfuscate("Player"), Image(Obfuscate("PhotonRealtime.dll")));
         return cached;
     }
 
@@ -906,100 +908,100 @@ struct Player : IL2CPP::Il2CppObject {
     }
 
     int GetActorNumber() {
-        static Method<int> actorNumberM = GetClass().GetMethod("get_ActorNumber", 0);
+        static Method<int> actorNumberM = GetClass().GetMethod(Obfuscate("get_ActorNumber"), 0);
         return actorNumberM[this]();
     }
 
     bool GetHasRejoined() {
-        static Method<bool> hasRejoinedM = GetClass().GetMethod("get_HasRejoined", 0);
+        static Method<bool> hasRejoinedM = GetClass().GetMethod(Obfuscate("get_HasRejoined"), 0);
         return hasRejoinedM[this]();
     }
 
     void SetHasRejoined(bool value) {
-        static Method<void> hasRejoinedM = GetClass().GetMethod("set_HasRejoined", 1);
+        static Method<void> hasRejoinedM = GetClass().GetMethod(Obfuscate("set_HasRejoined"), 1);
         hasRejoinedM[this](value);
     }
 
     std::string GetNickname() {
-        static Method<String*> getNicknameM = GetClass().GetMethod("get_NickName", 0);
+        static Method<String*> getNicknameM = GetClass().GetMethod(Obfuscate("get_NickName"), 0);
         return getNicknameM[this]()->str();
     }
 
     void SetNickname(const std::string& nickname) {
-        static Method<void> setNicknameM = GetClass().GetMethod("set_NickName", 1);
+        static Method<void> setNicknameM = GetClass().GetMethod(Obfuscate("set_NickName"), 1);
         setNicknameM[this](CreateMonoString(nickname));
     }
 
     std::string GetDefaultName() {
-        static Field<String*> defaultName = GetClass().GetField("defaultName");
+        static Field<String*> defaultName = GetClass().GetField(Obfuscate("defaultName"));
         defaultName.SetInstance(this);
         return defaultName.Get()->str();
     }
 
     void SetDefaultName(const std::string& name) {
-        static Field<String*> defaultName = GetClass().GetField("defaultName");
+        static Field<String*> defaultName = GetClass().GetField(Obfuscate("defaultName"));
         defaultName.SetInstance(this);
         defaultName.Set(CreateMonoString(name));
     }
 
     std::string GetUserId(){
-        static Method<String*> getUserIdM = GetClass().GetMethod("get_UserId", 0);
+        static Method<String*> getUserIdM = GetClass().GetMethod(Obfuscate("get_UserId"), 0);
         return getUserIdM[this]()->str();
     }
 
     void SetUserId(const std::string& userId){
-        static Method<void> setUserIdM = GetClass().GetMethod("set_UserId", 1);
+        static Method<void> setUserIdM = GetClass().GetMethod(Obfuscate("set_UserId"), 1);
         setUserIdM[this](CreateMonoString(userId));
     }
 
     bool GetIsMasterClient() {
-        static Method<bool> getIsMasterM = GetClass().GetMethod("get_IsMasterClient", 0);
+        static Method<bool> getIsMasterM = GetClass().GetMethod(Obfuscate("get_IsMasterClient"), 0);
         return getIsMasterM[this]();
     }
 
     bool GetIsInactive() {
-        static Method<bool> getIsInactiveM = GetClass().GetMethod("get_IsInactive", 0);
+        static Method<bool> getIsInactiveM = GetClass().GetMethod(Obfuscate("get_IsInactive"), 0);
         return getIsInactiveM[this]();
     }
 
     void SetIsInactive(bool is) {
-        static Method<void> setIsInactiveM = GetClass().GetMethod("set_IsInactive", 1);
+        static Method<void> setIsInactiveM = GetClass().GetMethod(Obfuscate("set_IsInactive"), 1);
         setIsInactiveM[this](is);
     }
 
     Player* Get(int id) {
-        static Method<Player*> getM = GetClass().GetMethod("Get", 1);
+        static Method<Player*> getM = GetClass().GetMethod(Obfuscate("Get"), 1);
         return getM[this](id);
     }
 
     Player* GetNext() {
-        static Method<Player*> getM = GetClass().GetMethod("GetNext", 0);
+        static Method<Player*> getM = GetClass().GetMethod(Obfuscate("GetNext"), 0);
         return getM[this]();
     }
 
     Player* GetNextFor(Player* currentPlayer) {
-        static Method<Player*> getM = GetClass().GetMethod("GetNextFor", 1);
+        static Method<Player*> getM = GetClass().GetMethod(Obfuscate("GetNextFor"), 1);
         return getM[this](currentPlayer);
     }
 
     Player* GetNextFor(int currentPlayerId) {
-        static Method<Player*> getM = GetClass().GetMethod("GetNextFor", 1);
+        static Method<Player*> getM = GetClass().GetMethod(Obfuscate("GetNextFor"), 1);
         return getM[this](currentPlayerId);
     }
 
     bool SetCustomProperties(Hashtable* propertiesToSet) {
-        static Method<bool> setCustomPropertiesM = GetClass().GetMethod("SetCustomProperties", 3);
+        static Method<bool> setCustomPropertiesM = GetClass().GetMethod(Obfuscate("SetCustomProperties"), 3);
         return setCustomPropertiesM[this](propertiesToSet, nullptr, nullptr);
     }
     Hashtable* GetCustomProperties() {
-        static Method<Hashtable*> CustomProperties = GetClass().GetMethod("get_CustomProperties");
+        static Method<Hashtable*> CustomProperties = GetClass().GetMethod(Obfuscate("get_CustomProperties"));
         return CustomProperties[this]();
     }
 };
 
 struct AuthenticationValues : IL2CPP::Il2CppObject {
     static Class GetClass(){
-        static Class cached = Class("Photon.Realtime", "AuthenticationValues");
+        static Class cached = Class(Obfuscate("Photon.Realtime"), Obfuscate("AuthenticationValues"));
         return cached;
     }
 
@@ -1009,67 +1011,67 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
     }
 
     CustomAuthenticationType GetAuthType() {
-        static Method<CustomAuthenticationType> getAuthType = GetClass().GetMethod("get_AuthType", 0);
+        static Method<CustomAuthenticationType> getAuthType = GetClass().GetMethod(Obfuscate("get_AuthType"), 0);
         return getAuthType[this]();
     }
 
     void SetAuthType(CustomAuthenticationType type) {
-        static Method<void> setAuthType = GetClass().GetMethod("set_AuthType", 1);
+        static Method<void> setAuthType = GetClass().GetMethod(Obfuscate("set_AuthType"), 1);
         return setAuthType[this](type);
     }
 
     std::string GetAuthGetParameters() {
-        static Method<String*> getAuthGetParameters = GetClass().GetMethod("get_AuthGetParameters", 0);
+        static Method<String*> getAuthGetParameters = GetClass().GetMethod(Obfuscate("get_AuthGetParameters"), 0);
         return getAuthGetParameters[this]()->str();
     }
 
     void SetAuthGetParameters(const std::string& parameters) {
-        static Method<void> setAuthGetParameters = GetClass().GetMethod("set_AuthGetParameters", 1);
+        static Method<void> setAuthGetParameters = GetClass().GetMethod(Obfuscate("set_AuthGetParameters"), 1);
         setAuthGetParameters[this](CreateMonoString(parameters));
     }
 
     IL2CPP::Il2CppObject* GetAuthPostData() {
-        static Method<IL2CPP::Il2CppObject*> getAuthPostData = GetClass().GetMethod("get_AuthPostData", 0);
+        static Method<IL2CPP::Il2CppObject*> getAuthPostData = GetClass().GetMethod(Obfuscate("get_AuthPostData"), 0);
         return getAuthPostData[this]();
     }
 
     IL2CPP::Il2CppObject* GetToken() {
-        static Method<IL2CPP::Il2CppObject*> getToken = GetClass().GetMethod("get_Token", 0);
+        static Method<IL2CPP::Il2CppObject*> getToken = GetClass().GetMethod(Obfuscate("get_Token"), 0);
         return getToken[this]();
     }
 
     std::string GetUserId() {
-        static Method<String*> getUserId = GetClass().GetMethod("get_UserId", 0);
+        static Method<String*> getUserId = GetClass().GetMethod(Obfuscate("get_UserId"), 0);
         return getUserId[this]()->str();
     }
 
     void SetUserId(const std::string& userid){
-        static Method<void> setUserId = GetClass().GetMethod("set_UserId", 1);
+        static Method<void> setUserId = GetClass().GetMethod(Obfuscate("set_UserId"), 1);
         setUserId[this](CreateMonoString(userid));
     }
 
     void SetAuthPostData(const std::string& stringData) {
-        static Method<void> setAuthPostData = GetClass().GetMethod("SetAuthPostData", {"stringData"});
+        static Method<void> setAuthPostData = GetClass().GetMethod(Obfuscate("SetAuthPostData"), {Obfuscate("stringData")});
         setAuthPostData[this](CreateMonoString(stringData));
     }
 
     void SetAuthPostData(Array<uint8_t>* byteData) {
-        static Method<void> setAuthPostData = GetClass().GetMethod("SetAuthPostData", {"byteData"});
+        static Method<void> setAuthPostData = GetClass().GetMethod(Obfuscate("SetAuthPostData"), {Obfuscate("byteData")});
         setAuthPostData[this](byteData);
     }
 
     void SetAuthPostData(Dictionary<String*, IL2CPP::Il2CppObject*>* dictData) {
-        static Method<void> setAuthPostData = GetClass().GetMethod("SetAuthPostData", {"dictData"});
+        static Method<void> setAuthPostData = GetClass().GetMethod(Obfuscate("SetAuthPostData"), {Obfuscate("dictData")});
         setAuthPostData[this](dictData);
     }
 
     void AddAuthParameter(const std::string& key, const std::string& value) {
-        static Method<void> addAuthParameter = GetClass().GetMethod("AddAuthParameter", 2);
+        static Method<void> addAuthParameter = GetClass().GetMethod(Obfuscate("AddAuthParameter"), 2);
         addAuthParameter[this](CreateMonoString(key), CreateMonoString(value));
     }
 
     std::string ToString() {
-        static Method<String*> toString = GetClass().GetMethod("ToString", 0);
+        static Method<String*> toString = GetClass().GetMethod(Obfuscate("ToString"), 0);
         return toString[this]()->str();
     }
 
@@ -1077,7 +1079,7 @@ struct AuthenticationValues : IL2CPP::Il2CppObject {
 
 struct TypedLobby : IL2CPP::Il2CppObject {
     static Class GetClass(){
-        static Class cached = Class("Photon.Realtime", "TypedLobby");
+        static Class cached = Class(Obfuscate("Photon.Realtime"), Obfuscate("TypedLobby"));
         return cached;
     }
 
@@ -1087,43 +1089,43 @@ struct TypedLobby : IL2CPP::Il2CppObject {
     }
 
     std::string GetName() {
-        static Field<String*> nameF = GetClass().GetField("Name");
+        static Field<String*> nameF = GetClass().GetField(Obfuscate("Name"));
         nameF.SetInstance(this);
         return nameF.Get()->str();
     }
 
     void SetName(const std::string& name) {
-        static Field<String*> nameF = GetClass().GetField("Name");
+        static Field<String*> nameF = GetClass().GetField(Obfuscate("Name"));
         nameF.SetInstance(this);
         nameF.Set(CreateMonoString(name));
     }
 
     LobbyType GetLobbyType() {
-        static Field<LobbyType> lType = GetClass().GetField("Type");
+        static Field<LobbyType> lType = GetClass().GetField(Obfuscate("Type"));
         lType.SetInstance(this);
         return lType.Get();
     }
 
     void SetLobbyType(LobbyType type) {
-        static Field<LobbyType> lType = GetClass().GetField("Type");
+        static Field<LobbyType> lType = GetClass().GetField(Obfuscate("Type"));
         lType.SetInstance(this);
         lType.Set(type);
     }
 
     static TypedLobby* GetDefault() {
-        static Field<TypedLobby*> def = GetClass().GetField("Default");
+        static Field<TypedLobby*> def = GetClass().GetField(Obfuscate("Default"));
         return def.Get();
     }
 
     std::string ToString() {
-        static Method<String*> toString = GetClass().GetMethod("ToString", 0);
+        static Method<String*> toString = GetClass().GetMethod(Obfuscate("ToString"), 0);
         return toString[this]()->str();
     }
 };
 
 struct PhotonNetwork : IL2CPP::Il2CppObject {
     static Class GetClass(){
-        static Class cached = Class("Photon.Pun", "PhotonNetwork");
+        static Class cached = Class(Obfuscate("Photon.Pun"), Obfuscate("PhotonNetwork"));
         return cached;
     }
 
@@ -1134,352 +1136,352 @@ struct PhotonNetwork : IL2CPP::Il2CppObject {
 
 
     static void AddCallbackTarget(Il2CppObject* target) {
-        static Method<void> AddCallbackTarget = GetClass().GetMethod("AddCallbackTarget");
+        static Method<void> AddCallbackTarget = GetClass().GetMethod(Obfuscate("AddCallbackTarget"));
         AddCallbackTarget(target);
     }
     static void RemoveCallbackTarget(Il2CppObject* target) {
-        static Method<void> RemoveCallbackTarget = GetClass().GetMethod("RemoveCallbackTarget");
+        static Method<void> RemoveCallbackTarget = GetClass().GetMethod(Obfuscate("RemoveCallbackTarget"));
         RemoveCallbackTarget(target);
     }
 
     static ServerSettings* GetPhotonServerSettings() {
-        static Method<ServerSettings*> settings = GetClass().GetMethod("get_PhotonServerSettings", 0);
+        static Method<ServerSettings*> settings = GetClass().GetMethod(Obfuscate("get_PhotonServerSettings"), 0);
         return settings();
     }
 
     static bool ConnectUsingSettings() {
-        static Method<bool> connect = GetClass().GetMethod("ConnectUsingSettings", 0);
+        static Method<bool> connect = GetClass().GetMethod(Obfuscate("ConnectUsingSettings"), 0);
         return connect();
     }
 
     static bool ConnectUsingSettings(AppSettings* appSettings, bool startInOfflineMode = false) {
-        static Method<bool> connect = GetClass().GetMethod("ConnectUsingSettings", {"appSettings", "startInOfflineMode"});
+        static Method<bool> connect = GetClass().GetMethod(Obfuscate("ConnectUsingSettings"), {Obfuscate("appSettings"), Obfuscate("startInOfflineMode")});
         return connect();
     }
 
     static bool GetInRoom() {
-        static Method<bool> inRoom = GetClass().GetMethod("get_InRoom", 0);
+        static Method<bool> inRoom = GetClass().GetMethod(Obfuscate("get_InRoom"), 0);
         return inRoom();
     }
 
     static bool ConnectToRegion(const std::string& region) {
-        static Method<bool> Cregion = GetClass().GetMethod("ConnectToRegion", {"region"});
+        static Method<bool> Cregion = GetClass().GetMethod(Obfuscate("ConnectToRegion"), {Obfuscate("region")});
         return Cregion(CreateMonoString(region));
     }
 
     static void Disconnect() {
-        static Method<void> disconnect = GetClass().GetMethod("Disconnect", 0);
+        static Method<void> disconnect = GetClass().GetMethod(Obfuscate("Disconnect"), 0);
         disconnect();
     }
 
     static void Reconnect() {
-        static Method<void> reconnect = GetClass().GetMethod("Reconnect", 0);
+        static Method<void> reconnect = GetClass().GetMethod(Obfuscate("Reconnect"), 0);
         reconnect();
     }
 
     static int GetPing() {
-        static Method<int> getPing = GetClass().GetMethod("GetPing", 0);
+        static Method<int> getPing = GetClass().GetMethod(Obfuscate("GetPing"), 0);
         return getPing();
     }
 
     static int GetCountOfPlayersOnMaster() {
-        static Method<int> countOf = GetClass().GetMethod("get_CountOfPlayersOnMaster", 0);
+        static Method<int> countOf = GetClass().GetMethod(Obfuscate("get_CountOfPlayersOnMaster"), 0);
         return countOf();
     }
 
     static int GetCountOfPlayersInRooms() {
-        static Method<int> countOf = GetClass().GetMethod("get_CountOfPlayersInRooms", 0);
+        static Method<int> countOf = GetClass().GetMethod(Obfuscate("get_CountOfPlayersInRooms"), 0);
         return countOf();
     }
 
     static int GetCountOfPlayers() {
-        static Method<int> countOf = GetClass().GetMethod("get_CountOfPlayers", 0);
+        static Method<int> countOf = GetClass().GetMethod(Obfuscate("get_CountOfPlayers"), 0);
         return countOf();
     }
 
     static int GetCountOfRooms() {
-        static Method<int> countOf = GetClass().GetMethod("get_CountOfRooms", 0);
+        static Method<int> countOf = GetClass().GetMethod(Obfuscate("get_CountOfRooms"), 0);
         return countOf();
     }
 
     static void OpRemoveCompleteCache() {
-        static Method<void> remove = GetClass().GetMethod("OpRemoveCompleteCache", 0);
+        static Method<void> remove = GetClass().GetMethod(Obfuscate("OpRemoveCompleteCache"), 0);
         remove();
     }
 
     static void OpRemoveCompleteCacheOfPlayer(int actorNumber) {
-        static Method<void> remove = GetClass().GetMethod("OpRemoveCompleteCacheOfPlayer", 1);
+        static Method<void> remove = GetClass().GetMethod(Obfuscate("OpRemoveCompleteCacheOfPlayer"), 1);
         remove(actorNumber);
     }
 
     static void OpCleanActorRpcBuffer(int actorNumber) {
-        static Method<void> clean = GetClass().GetMethod("OpCleanActorRpcBuffer", 1);
+        static Method<void> clean = GetClass().GetMethod(Obfuscate("OpCleanActorRpcBuffer"), 1);
         clean(actorNumber);
     }
 
 
     static void SetSerializationRate(int rate) {
-        static Method<void> serializationRate = GetClass().GetMethod("set_SerializationRate", 1);
+        static Method<void> serializationRate = GetClass().GetMethod(Obfuscate("set_SerializationRate"), 1);
         serializationRate(rate);
     }
 
     static int GetSerializationRate() {
-        static Method<int> serializationRate = GetClass().GetMethod("get_SerializationRate", 0);
+        static Method<int> serializationRate = GetClass().GetMethod(Obfuscate("get_SerializationRate"), 0);
         return serializationRate();
     }
 
     static void SetSendRate(int rate) {
-        static Method<void> serializationRate = GetClass().GetMethod("set_SendRate", 1);
+        static Method<void> serializationRate = GetClass().GetMethod(Obfuscate("set_SendRate"), 1);
         serializationRate(rate);
     }
 
     static int GetSendRate() {
-        static Method<int> serializationRate = GetClass().GetMethod("get_SendRate", 0);
+        static Method<int> serializationRate = GetClass().GetMethod(Obfuscate("get_SendRate"), 0);
         return serializationRate();
     }
 
     static int GetServerTimestamp() {
-        static Method<int> serverTimestamp = GetClass().GetMethod("get_ServerTimestamp", 0);
+        static Method<int> serverTimestamp = GetClass().GetMethod(Obfuscate("get_ServerTimestamp"), 0);
         return serverTimestamp();
     }
 
     static bool GetInLobby() {
-        static Method<bool> inLobby = GetClass().GetMethod("get_InLobby", 0);
+        static Method<bool> inLobby = GetClass().GetMethod(Obfuscate("get_InLobby"), 0);
         return inLobby();
     }
 
     static AuthenticationValues* GetAuthValues(){
-        static Method<AuthenticationValues*> getAuthValues = GetClass().GetMethod("get_AuthValues", 0);
+        static Method<AuthenticationValues*> getAuthValues = GetClass().GetMethod(Obfuscate("get_AuthValues"), 0);
         return getAuthValues();
     }
 
     static void SetAuthValues(AuthenticationValues* value){
-        static Method<void> setAuthValues = GetClass().GetMethod("set_AuthValues", 1);
+        static Method<void> setAuthValues = GetClass().GetMethod(Obfuscate("set_AuthValues"), 1);
         setAuthValues(value);
     }
 
     static std::string GetGameVersion() {
-        static Method<String*> getGameVersionM = GetClass().GetMethod("get_GameVersion", 0);
+        static Method<String*> getGameVersionM = GetClass().GetMethod(Obfuscate("get_GameVersion"), 0);
         return getGameVersionM()->str();
     }
 
     static void SetGameVersion(const std::string& gameVersion) {
-        static Method<void> setGameVersionM = GetClass().GetMethod("set_GameVersion", 1);
+        static Method<void> setGameVersionM = GetClass().GetMethod(Obfuscate("set_GameVersion"), 1);
         return setGameVersionM(CreateMonoString(gameVersion));
     }
 
     static std::string GetAppVersion() {
-        static Method<String*> getAppVersionM = GetClass().GetMethod("get_AppVersion", 0);
+        static Method<String*> getAppVersionM = GetClass().GetMethod(Obfuscate("get_AppVersion"), 0);
         return getAppVersionM()->str();
     }
 
     static bool SetMasterClient(Player* player){
-        static Method<bool> setMasterClientM = GetClass().GetMethod("SetMasterClient", 1);
+        static Method<bool> setMasterClientM = GetClass().GetMethod(Obfuscate("SetMasterClient"), 1);
         return setMasterClientM(player);
     }
 
     static bool CloseConnection(Player* player) {
-        static Method<bool> closeConnectionM = GetClass().GetMethod("CloseConnection", 1);
+        static Method<bool> closeConnectionM = GetClass().GetMethod(Obfuscate("CloseConnection"), 1);
         return closeConnectionM(player);
     }
 
     static bool JoinRandomRoom(){
-        static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomRoom", 0);
+        static Method<bool> joinRandomRoomM = GetClass().GetMethod(Obfuscate("JoinRandomRoom"), 0);
         return joinRandomRoomM();
     }
 
     static bool JoinRandomRoom(Hashtable* expectedCustomRoomProperties, uint8_t expectedMaxPlayers) {
-        static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomRoom", {"expectedCustomRoomProperties", "expectedMaxPlayers"});
+        static Method<bool> joinRandomRoomM = GetClass().GetMethod(Obfuscate("JoinRandomRoom"), {Obfuscate("expectedCustomRoomProperties"), Obfuscate("expectedMaxPlayers")});
         return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers);
     }
 
     static bool JoinRandomRoom(Hashtable* expectedCustomRoomProperties, uint8_t expectedMaxPlayers, MatchmakingMode matchingType, TypedLobby* typedLobby, const std::string& sqlLobbyFilter, Array<String*>* expectedUsers = nullptr) {
-        static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomRoom", {"expectedCustomRoomProperties", "expectedMaxPlayers", "matchingType", "typedLobby", "sqlLobbyFilter", "expectedUsers"});
+        static Method<bool> joinRandomRoomM = GetClass().GetMethod(Obfuscate("JoinRandomRoom"), {Obfuscate("expectedCustomRoomProperties"), Obfuscate("expectedMaxPlayers"), Obfuscate("matchingType"), Obfuscate("typedLobby"), Obfuscate("sqlLobbyFilter"), Obfuscate("expectedUsers")});
         return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers, matchingType, typedLobby,
                                CreateMonoString(sqlLobbyFilter), expectedUsers);
     }
 
     static bool JoinRandomOrCreateRoom(Hashtable* expectedCustomRoomProperties = nullptr, uint8_t expectedMaxPlayers = 0, MatchmakingMode matchingType = MatchmakingMode::FillRoom, TypedLobby* typedLobby = nullptr, const std::string& sqlLobbyFilter = nullptr, const std::string& roomName = nullptr, RoomOptions* roomOptions = nullptr, Array<String*>* expectedUsers = nullptr) {
-        static Method<bool> joinRandomRoomM = GetClass().GetMethod("JoinRandomOrCreateRoom", {"expectedCustomRoomProperties", "expectedMaxPlayers", "matchingType", "typedLobby", "sqlLobbyFilter", "roomName", "roomOptions", "expectedUsers"});
+        static Method<bool> joinRandomRoomM = GetClass().GetMethod(Obfuscate("JoinRandomOrCreateRoom"), {Obfuscate("expectedCustomRoomProperties"), Obfuscate("expectedMaxPlayers"), Obfuscate("matchingType"), Obfuscate("typedLobby"), Obfuscate("sqlLobbyFilter"), Obfuscate("roomName"), Obfuscate("roomOptions"), Obfuscate("expectedUsers")});
         return joinRandomRoomM(expectedCustomRoomProperties, expectedMaxPlayers, matchingType, typedLobby,
                                CreateMonoString(sqlLobbyFilter), CreateMonoString(roomName),
                                expectedUsers);
     }
 
     static bool CreateRoom(const std::string& roomName, RoomOptions* roomOptions = nullptr, TypedLobby* typedLobby = nullptr, Array<String*>* expectedUsers = nullptr) {
-        static Method<bool> createRoomM = GetClass().GetMethod("CreateRoom", {"roomName", "roomOptions", "typedLobby", "expectedUsers"});
+        static Method<bool> createRoomM = GetClass().GetMethod(Obfuscate("CreateRoom"), {Obfuscate("roomName"), Obfuscate("roomOptions"), Obfuscate("typedLobby"), Obfuscate("expectedUsers")});
         return createRoomM(CreateMonoString(roomName), roomOptions, typedLobby, expectedUsers);
     }
 
     static bool JoinOrCreateRoom(const std::string& roomName, RoomOptions* roomOptions, TypedLobby* typedLobby, Array<String*>* expectedUsers = nullptr) {
-        static Method<bool> joinOrCreateRoomM = GetClass().GetMethod("JoinOrCreateRoom", {"roomName", "roomOptions", "typedLobby", "expectedUsers"});
+        static Method<bool> joinOrCreateRoomM = GetClass().GetMethod(Obfuscate("JoinOrCreateRoom"), {Obfuscate("roomName"), Obfuscate("roomOptions"), Obfuscate("typedLobby"), Obfuscate("expectedUsers")});
         return joinOrCreateRoomM(CreateMonoString(roomName), roomOptions, typedLobby, expectedUsers);
     }
 
     static bool JoinRoom(const std::string& roomName, Array<String*>* expectedUsers = nullptr) {
-        static Method<bool> joinRoomM = GetClass().GetMethod("JoinRoom", {"roomName", "expectedUsers"});
+        static Method<bool> joinRoomM = GetClass().GetMethod(Obfuscate("JoinRoom"), {Obfuscate("roomName"), Obfuscate("expectedUsers")});
         return joinRoomM(CreateMonoString(roomName), expectedUsers);
     }
 
     static bool RejoinRoom(const std::string& roomName) {
-        static Method<bool> RejoinRoomM = GetClass().GetMethod("RejoinRoom", {"roomName"});
+        static Method<bool> RejoinRoomM = GetClass().GetMethod(Obfuscate("RejoinRoom"), {Obfuscate("roomName")});
         return RejoinRoomM(CreateMonoString(roomName));
     }
 
     static bool JoinLobby() {
-        static Method<bool> joinLobby = GetClass().GetMethod("JoinLobby", 0);
+        static Method<bool> joinLobby = GetClass().GetMethod(Obfuscate("JoinLobby"), 0);
         return joinLobby();
     }
 
     static bool JoinLobby(TypedLobby* typedLobby) {
-        static Method<bool> joinLobby = GetClass().GetMethod("JoinLobby", {"typedLobby"});
+        static Method<bool> joinLobby = GetClass().GetMethod(Obfuscate("JoinLobby"), {Obfuscate("typedLobby")});
         return joinLobby(typedLobby);
     }
 
     static bool LeaveLobby() {
-        static Method<bool> leaveLobby = GetClass().GetMethod("LeaveLobby", 0);
+        static Method<bool> leaveLobby = GetClass().GetMethod(Obfuscate("LeaveLobby"), 0);
         return leaveLobby();
     }
 
     static bool ReconnectAndRejoin() {
-        static Method<bool> reconnectAndRejoin = GetClass().GetMethod("ReconnectAndRejoin", 0);
+        static Method<bool> reconnectAndRejoin = GetClass().GetMethod(Obfuscate("ReconnectAndRejoin"), 0);
         return reconnectAndRejoin();
     }
 
     static bool LeaveRoom(bool becomeInactive = true){
-        static Method<bool> leaveRoom = GetClass().GetMethod("LeaveRoom", {"becomeInactive"});
+        static Method<bool> leaveRoom = GetClass().GetMethod(Obfuscate("LeaveRoom"), {Obfuscate("becomeInactive")});
         return leaveRoom(becomeInactive);
     }
 
     static bool FindFriends(Structures::Mono::List<String*> friends){
-        static Method<bool> findFriendsM = GetClass().GetMethod("FindFriends", 1);
+        static Method<bool> findFriendsM = GetClass().GetMethod(Obfuscate("FindFriends"), 1);
         return findFriendsM(friends);
     }
 
     static void LoadLevel(int levelNumber) {
-        static Method<void> loadLevelM = GetClass().GetMethod("LoadLevel", 1);
+        static Method<void> loadLevelM = GetClass().GetMethod(Obfuscate("LoadLevel"), 1);
         loadLevelM(levelNumber);
     }
 
     static void LoadLevel(const std::string& levelName) {
-        static Method<void> loadLevelM = GetClass().GetMethod("LoadLevel", 1);
+        static Method<void> loadLevelM = GetClass().GetMethod(Obfuscate("LoadLevel"), 1);
         loadLevelM(CreateMonoString(levelName));
     }
 
     static Player* GetLocalPlayer(){
-        static Method<Player*> getLocalPlayerM = GetClass().GetMethod("get_LocalPlayer", 0);
+        static Method<Player*> getLocalPlayerM = GetClass().GetMethod(Obfuscate("get_LocalPlayer"), 0);
         return getLocalPlayerM();
     }
 
     static std::vector<Player*> GetPlayerList(){
-        static Method<Array<Player*>*> getPlayerListM = GetClass().GetMethod("get_PlayerList", 0);
+        static Method<Array<Player*>*> getPlayerListM = GetClass().GetMethod(Obfuscate("get_PlayerList"), 0);
         return getPlayerListM()->ToVector();
     }
 
     static std::vector<Player*> GetPlayerListOthers(){
-        static Method<Array<Player*>*> getPlayerListOthersM = GetClass().GetMethod("get_PlayerListOthers", 0);
+        static Method<Array<Player*>*> getPlayerListOthersM = GetClass().GetMethod(Obfuscate("get_PlayerListOthers"), 0);
         return getPlayerListOthersM()->ToVector();
     }
 
     static void DestroyAll(){
-        static Method<void> destroyAll = GetClass().GetMethod("DestroyAll", 0);
+        static Method<void> destroyAll = GetClass().GetMethod(Obfuscate("DestroyAll"), 0);
         destroyAll();
     }
 
     static void DestroyPlayerObjects(Player* player){
-        static Method<void> destroyPlayerObjects = GetClass().GetMethod("DestroyPlayerObjects", {"targetPlayer"});
+        static Method<void> destroyPlayerObjects = GetClass().GetMethod(Obfuscate("DestroyPlayerObjects"), {Obfuscate("targetPlayer")});
         destroyPlayerObjects(player);
     }
 
     static void DestroyPlayerObjects(int targetPlayerId) {
-        static Method<void> destroyPlayerObjects = GetClass().GetMethod("DestroyPlayerObjects", {"targetPlayerId"});
+        static Method<void> destroyPlayerObjects = GetClass().GetMethod(Obfuscate("DestroyPlayerObjects"), {Obfuscate("targetPlayerId")});
         destroyPlayerObjects(targetPlayerId);
     }
 
     static void RemoveRPCs(Player* targetPlayer) {
-        static Method<void> removeRpcs = GetClass().GetMethod("RemoveRPCs", {"targetPlayer"});
+        static Method<void> removeRpcs = GetClass().GetMethod(Obfuscate("RemoveRPCs"), {Obfuscate("targetPlayer")});
         removeRpcs(targetPlayer);
     }
 
     static void RemoveRPCs(PhotonView* targetPhotonView) {
-        static Method<void> removeRpcs = GetClass().GetMethod("RemoveRPCs", {"targetPhotonView"});
+        static Method<void> removeRpcs = GetClass().GetMethod(Obfuscate("RemoveRPCs"), {Obfuscate("targetPhotonView")});
         removeRpcs(targetPhotonView);
     }
 
     static bool RaiseEvent(uint8_t eventCode, IL2CPP::Il2CppObject* eventContent, RaiseEventOptions* raiseEventOptions, SendOptions sendOptions){
-        static Method<bool> raiseEvent = GetClass().GetMethod("RaiseEvent", {"eventCode", "eventContent", "raiseEventOptions", "sendOptions"});
+        static Method<bool> raiseEvent = GetClass().GetMethod(Obfuscate("RaiseEvent"), {Obfuscate("eventCode"), Obfuscate("eventContent"), Obfuscate("raiseEventOptions"), Obfuscate("sendOptions")});
         return raiseEvent(eventCode, eventContent, raiseEventOptions, sendOptions);
     }
 
     static std::string GetPunVersion() {
-        static Field<String*> punVersion = GetClass().GetField("PunVersion");
+        static Field<String*> punVersion = GetClass().GetField(Obfuscate("PunVersion"));
         return punVersion.Get()->str();
     }
 
     static bool GetCustomRoomList(TypedLobby* typedLobby, const std::string& sqlLobbyFilter) {
-        static Method<bool> getCustomRoomList = GetClass().GetMethod("GetCustomRoomList", {"typedLobby", "sqlLobbyFilter"});
+        static Method<bool> getCustomRoomList = GetClass().GetMethod(Obfuscate("GetCustomRoomList"), {Obfuscate("typedLobby"), Obfuscate("sqlLobbyFilter")});
         return getCustomRoomList(typedLobby, CreateMonoString(sqlLobbyFilter));
     }
 
     static Room* GetCurrentRoom() {
-        static Method<Room*> getCurrentRoom = GetClass().GetMethod("get_CurrentRoom", 0);
+        static Method<Room*> getCurrentRoom = GetClass().GetMethod(Obfuscate("get_CurrentRoom"), 0);
         return getCurrentRoom();
     }
 
     static Player* GetMasterClient() {
-        static Method<Player*> getM = GetClass().GetMethod("get_MasterClient", 0);
+        static Method<Player*> getM = GetClass().GetMethod(Obfuscate("get_MasterClient"), 0);
         return getM();
     }
 
     static GameObject* Instantiate(const std::string& prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
-        static Method<GameObject*> instantiate = GetClass().GetMethod("Instantiate");
+        static Method<GameObject*> instantiate = GetClass().GetMethod(Obfuscate("Instantiate"));
         return instantiate(CreateMonoString(prefabName), position, rotation, group, data);
     }
 
     static GameObject* InstantiateRoomObject(const std::string& prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
-        static Method<GameObject*> instantiate = GetClass().GetMethod("InstantiateRoomObject");
+        static Method<GameObject*> instantiate = GetClass().GetMethod(Obfuscate("InstantiateRoomObject"));
         return instantiate(CreateMonoString(prefabName), position, rotation, group, data);
     }
 
     static GameObject* InstantiateSceneObject(const std::string& prefabName, Vector3 position, Quaternion rotation, uint8_t group = 0, Array<IL2CPP::Il2CppObject*>* data = nullptr){
-        static Method<GameObject*> instantiate = GetClass().GetMethod("InstantiateSceneObject");
+        static Method<GameObject*> instantiate = GetClass().GetMethod(Obfuscate("InstantiateSceneObject"));
         return instantiate(CreateMonoString(prefabName), position, rotation, group, data);
     }
 
     static void Destroy(GameObject* targetGo) {
-        static Method<void> destroy = GetClass().GetMethod("Destroy", {"targetGo"});
+        static Method<void> destroy = GetClass().GetMethod(Obfuscate("Destroy"), {Obfuscate("targetGo")});
         destroy(targetGo);
     }
 
     static void Destroy(PhotonView* targetView) {
-        static Method<void> destroy = GetClass().GetMethod("Destroy", {"targetView"});
+        static Method<void> destroy = GetClass().GetMethod(Obfuscate("Destroy"), {Obfuscate("targetView")});
         destroy(targetView);
     }
 };
 
 struct EventData : BNM::IL2CPP::Il2CppObject {
     static Class GetClass() {
-        static Class mclass = Class("ExitGames.Client.Photon", "EventData");
+        static Class mclass = Class(Obfuscate("ExitGames.Client.Photon"), Obfuscate("EventData"));
         return mclass;
     }
 
     BNM::Types::byte GetCode() {
-        static Field<BNM::Types::byte> Code = GetClass().GetField("Code");
+        static Field<BNM::Types::byte> Code = GetClass().GetField(Obfuscate("Code"));
         Code.SetInstance(this);
         return Code();
     }
     BNM::Types::byte GetSenderKey() {
-        static Field<BNM::Types::byte> SenderKey = GetClass().GetField("SenderKey");
+        static Field<BNM::Types::byte> SenderKey = GetClass().GetField(Obfuscate("SenderKey"));
         SenderKey.SetInstance(this);
         return SenderKey();
     }
     BNM::Types::byte CustomDataKey() {
-        static Field<BNM::Types::byte> CustomDataKey = GetClass().GetField("CustomDataKey");
+        static Field<BNM::Types::byte> CustomDataKey = GetClass().GetField(Obfuscate("CustomDataKey"));
         CustomDataKey.SetInstance(this);
         return CustomDataKey();
     }
     BNM::IL2CPP::Il2CppObject* GetCustomData() {
-        static Method<BNM::IL2CPP::Il2CppObject*> get_CustomData = GetClass().GetMethod("get_CustomData");
+        static Method<BNM::IL2CPP::Il2CppObject*> get_CustomData = GetClass().GetMethod(Obfuscate("get_CustomData"));
         return get_CustomData[this]();
     }
 };
